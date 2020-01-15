@@ -2,7 +2,11 @@ package com.twu.biblioteca;
 
 public class BibliotecaApp {
 
-    public static void main(String[] args) {
-        System.out.println("Hello, world!");
+    public static String main(String[] args) {
+
+        String welcome = "Welcome to library !";
+        System.out.println(welcome);
+
+        return welcome ;
     }
 }
