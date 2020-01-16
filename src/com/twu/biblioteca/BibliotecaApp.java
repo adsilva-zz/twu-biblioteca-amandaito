@@ -1,12 +1,12 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.service.MainService;
+
 public class BibliotecaApp {
 
-    public static String main(String[] args) {
+    public static void main(String[] args) {
+        MainService mainService = new MainService();
 
-        String welcome = "Welcome to library !";
-        System.out.println(welcome);
-
-        return welcome ;
+        System.out.println(mainService.callWelcomeMessage());
     }
 }
