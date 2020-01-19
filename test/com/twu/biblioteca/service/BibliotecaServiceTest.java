@@ -10,12 +10,12 @@ import static org.junit.Assert.*;
 
 public class BibliotecaServiceTest {
 
-    private BibliotecaService mainService = new BibliotecaService();
+    private BibliotecaService bibliotecaService = new BibliotecaService();
     private BookService bookService = new BookService();
 
     @Test
     public void welcomeSuccessTest() {
-        assertEquals("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore", mainService.callWelcomeMessage());
+        assertEquals("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore", bibliotecaService.callWelcomeMessage());
     }
 
     @Test
@@ -26,6 +26,12 @@ public class BibliotecaServiceTest {
         assertNotNull(listaOfBooks);
         listaOfBooks.add(book);
         assertTrue(listaOfBooks.size() == 1);
-        assertEquals(dataBook, mainService.listBooksWithColumns(listaOfBooks).get(0));
+        assertEquals(dataBook, bibliotecaService.listBooksWithColumns(listaOfBooks).get(0));
+    }
+
+    @Test
+    public void showMenuOptions(){
+        String menuOptions = "Menu /n 1 - List of books";
+        assertEquals(menuOptions, bibliotecaService.listMenuOptions());
     }
 }

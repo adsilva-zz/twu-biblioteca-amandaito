@@ -16,4 +16,8 @@ public class BibliotecaService {
     public List<String> listBooksWithColumns(List<Book> listOfBooks) {
        return listOfBooks.stream().map(Book::toString).collect(Collectors.toList());
     }
+
+    public String listMenuOptions(){
+        return "Menu /n 1 - List of books";
+    }
 }
