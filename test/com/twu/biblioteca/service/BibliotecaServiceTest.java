@@ -21,17 +21,18 @@ public class BibliotecaServiceTest {
     @Test
     public void listBooksWithAuthorAndPublication() {
         String dataBook = "Nora Roberts | 2019-12-27";
-        List<Book> listaOfBooks = bookService.listOfBooks();
+        List<Book> listOfBooks = bookService.listOfBooks();
         Book book = new Book("Nora Roberts", "TDD", LocalDate.of(2019, 12, 27));
-        assertNotNull(listaOfBooks);
-        listaOfBooks.add(book);
-        assertTrue(listaOfBooks.size() == 1);
-        assertEquals(dataBook, bibliotecaService.listBooksWithColumns(listaOfBooks).get(0));
+        assertNotNull(listOfBooks);
+        listOfBooks.add(book);
+        assertTrue(listOfBooks.size() == 1);
+        assertEquals(dataBook, bibliotecaService.listBooksWithColumns(listOfBooks).get(0));
     }
 
     @Test
     public void showMenuOptions(){
-        String menuOptions = "Menu /n 1 - List of books";
+        String menuOptions = "Menu \n 1 - List of books\n";
         assertEquals(menuOptions, bibliotecaService.listMenuOptions());
     }
+
 }

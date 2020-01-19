@@ -18,6 +18,6 @@ public class BibliotecaService {
     }
 
     public String listMenuOptions(){
-        return "Menu /n 1 - List of books";
+        return "Menu \n1 - List of books\n";
     }
 }

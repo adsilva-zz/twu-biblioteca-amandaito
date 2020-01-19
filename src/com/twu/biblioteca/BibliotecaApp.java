@@ -10,7 +10,7 @@ import java.util.List;
 public class BibliotecaApp {
 
     public static void main(String[] args) {
-        BibliotecaService mainService = new BibliotecaService();
+        BibliotecaService bibliotecaService = new BibliotecaService();
         BookService bookService = new BookService();
         List<Book> listOfBooks = bookService.listOfBooks();
         Book bookTDD = new Book("Nora Roberts", "TDD", LocalDate.of(2019, 12, 27));
@@ -18,9 +18,10 @@ public class BibliotecaApp {
         listOfBooks.add(bookDev);
         listOfBooks.add(bookTDD);
 
-        System.out.println(mainService.callWelcomeMessage());
+        System.out.println(bibliotecaService.callWelcomeMessage());
 
-        System.out.println("List of Books");
-        listOfBooks.forEach(book -> System.out.println(book));
+        System.out.println(bibliotecaService.listMenuOptions());
+
+        bibliotecaService.listBooksWithColumns(listOfBooks).forEach(book -> System.out.println(book));
     }
 }
