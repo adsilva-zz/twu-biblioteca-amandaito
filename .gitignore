@@ -3,5 +3,6 @@
 .project
 .settings/
 target/
+out/
 .idea/
 .attach_pid
