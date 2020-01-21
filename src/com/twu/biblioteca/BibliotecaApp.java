@@ -30,7 +30,7 @@ public class BibliotecaApp {
             option = bibliotecaService.chooseMenuOption();
             if (option == 1) {
                 bibliotecaService.listBooksWithColumns(listOfBooks).forEach(book -> System.out.println(book));
-            } else {
+            } else if (option == 2){
                 System.out.println("Please select valid option");
             }
         }
