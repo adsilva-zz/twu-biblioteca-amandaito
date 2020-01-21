@@ -4,6 +4,7 @@ import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.repository.BookRepository;
 import org.junit.Test;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -17,5 +18,11 @@ public class BookServiceTest {
     public void listBooksWithSuccess() {
         assertNotNull(bookService.getlistOfBooks());
         assertTrue(bookService.getlistOfBooks() instanceof List);
+    }
+
+    @Test
+    public void checkoutBookWithSuccess(){
+        Book book = new Book("Bruce Lee", "Run two", LocalDate.of(2019, 02, 12));
+        assertEquals(true, book.getCheckout());
     }
 }
