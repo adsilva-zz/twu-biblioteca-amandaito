@@ -16,8 +16,8 @@ public class BookServiceTest {
 
     @Test
     public void listBooksWithSuccess() {
-        assertNotNull(bookService.getlistOfBooks());
-        assertTrue(bookService.getlistOfBooks() instanceof List);
+        assertNotNull(bookService.getListOfBooks());
+        assertTrue(bookService.getListOfBooks() instanceof List);
     }
 
     @Test

@@ -23,7 +23,7 @@ public class BibliotecaServiceTest {
     @Test
     public void listBooksWithAuthorAndPublication() {
         String dataBook = "Nora Roberts | 2019-12-27";
-        List<Book> listOfBooks = bookService.getlistOfBooks();
+        List<Book> listOfBooks = bookService.getListOfBooks();
         Book book = new Book("Nora Roberts", "TDD", LocalDate.of(2019, 12, 27), false);
         assertNotNull(listOfBooks);
         listOfBooks.add(book);
@@ -33,7 +33,7 @@ public class BibliotecaServiceTest {
 
     @Test
     public void showMenuOptions(){
-        String menuOptions = "Menu \n 1 - List of books\n";
+        String menuOptions = "Menu \n1 - List of books\n2 - Checkout books \n3 - Quit";
         assertEquals(menuOptions, bibliotecaService.listMenuOptions());
     }
 }

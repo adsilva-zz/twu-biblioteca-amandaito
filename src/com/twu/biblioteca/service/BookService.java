@@ -13,7 +13,11 @@ public class BookService {
         this.bookRepository = bookRepository;
     }
 
-    public List<Book> getlistOfBooks() {
+    public List<Book> getListOfBooks() {
         return bookRepository.getListOfBook();
+    }
+
+    public void checkoutBook(Book book){
+        book.setCheckout(true);
     }
 }

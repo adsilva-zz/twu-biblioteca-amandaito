@@ -9,14 +9,14 @@ import java.util.stream.Collectors;
 public class BibliotecaService {
 
     private String welcomeMassage = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore";
-    private String menuOptions = "Menu \n1 - List of books\n2 - Quit \n";
+    private String menuOptions = "Menu \n1 - List of books\n2 - Checkout books \n3 - Quit";
 
     public String callWelcomeMessage() {
         return welcomeMassage;
     }
 
     public List<String> listBooksWithColumns(List<Book> listOfBooks) {
-       return listOfBooks.stream().map(Book::toString).collect(Collectors.toList());
+       return listOfBooks.stream().filter(book -> !book.isCheckout()).map(Book::toString).collect(Collectors.toList());
     }
 
     public String listMenuOptions(){
