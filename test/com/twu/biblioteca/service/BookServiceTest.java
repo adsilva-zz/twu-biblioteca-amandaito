@@ -1,6 +1,7 @@
 package com.twu.biblioteca.service;
 
 import com.twu.biblioteca.model.Book;
+import com.twu.biblioteca.repository.BookRepository;
 import org.junit.Test;
 
 import java.util.List;
@@ -9,11 +10,12 @@ import static org.junit.Assert.*;
 
 public class BookServiceTest {
 
-    private BookService bookService = new BookService();
+    private BookRepository bookRepository = new BookRepository();
+    private BookService bookService = new BookService(bookRepository);
 
     @Test
     public void listBooksWithSuccess() {
-        assertNotNull(bookService.listOfBooks());
-        assertTrue(bookService.listOfBooks() instanceof List);
+        assertNotNull(bookService.getlistOfBooks());
+        assertTrue(bookService.getlistOfBooks() instanceof List);
     }
 }

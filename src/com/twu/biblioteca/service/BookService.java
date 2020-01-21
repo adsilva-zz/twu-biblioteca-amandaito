@@ -7,9 +7,13 @@ import java.util.List;
 
 public class BookService {
 
-    private BookRepository bookRepository = new BookRepository();
+    private BookRepository bookRepository;
 
-    public List<Book> listOfBooks() {
+    public BookService(BookRepository bookRepository){
+        this.bookRepository = bookRepository;
+    }
+
+    public List<Book> getlistOfBooks() {
         return bookRepository.getListOfBook();
     }
 }

@@ -1,6 +1,7 @@
 package com.twu.biblioteca.service;
 
 import com.twu.biblioteca.model.Book;
+import com.twu.biblioteca.repository.BookRepository;
 import org.junit.Test;
 
 import java.time.LocalDate;
@@ -11,7 +12,8 @@ import static org.junit.Assert.*;
 public class BibliotecaServiceTest {
 
     private BibliotecaService bibliotecaService = new BibliotecaService();
-    private BookService bookService = new BookService();
+    private BookRepository bookRepository = new BookRepository();
+    private BookService bookService = new BookService(bookRepository);
 
     @Test
     public void welcomeSuccessTest() {
@@ -21,7 +23,7 @@ public class BibliotecaServiceTest {
     @Test
     public void listBooksWithAuthorAndPublication() {
         String dataBook = "Nora Roberts | 2019-12-27";
-        List<Book> listOfBooks = bookService.listOfBooks();
+        List<Book> listOfBooks = bookService.getlistOfBooks();
         Book book = new Book("Nora Roberts", "TDD", LocalDate.of(2019, 12, 27));
         assertNotNull(listOfBooks);
         listOfBooks.add(book);
@@ -34,5 +36,4 @@ public class BibliotecaServiceTest {
         String menuOptions = "Menu \n 1 - List of books\n";
         assertEquals(menuOptions, bibliotecaService.listMenuOptions());
     }
-
 }

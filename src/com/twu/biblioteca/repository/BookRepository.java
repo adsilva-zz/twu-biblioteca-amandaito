@@ -7,9 +7,10 @@ import java.util.List;
 
 public class BookRepository {
 
-    private List<Book> listOfBook = new ArrayList<>();
+    private List<Book> listOfBook;
 
     public BookRepository() {
+        this.listOfBook = new ArrayList<Book>();
     }
 
     public BookRepository(List<Book> listOfBook) {
