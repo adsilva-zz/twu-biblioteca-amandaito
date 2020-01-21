@@ -20,4 +20,8 @@ public class BookService {
     public void checkoutBook(Book book){
         book.setCheckout(true);
     }
+
+    public Book findBookWithIdentifier(long identifier){
+        return getListOfBooks().stream().filter(book -> book.getIdentifier() == identifier).findFirst().orElse(null);
+    }
 }

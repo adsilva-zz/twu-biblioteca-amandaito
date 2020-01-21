@@ -10,6 +10,19 @@ public class BibliotecaService {
 
     private String welcomeMassage = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore";
     private String menuOptions = "Menu \n1 - List of books\n2 - Checkout books \n3 - Quit";
+    private BookService bookService;
+
+    public BibliotecaService(BookService bookService){
+        this.bookService = bookService;
+    }
+
+    public BookService getBookService() {
+        return bookService;
+    }
+
+    public void setBookService(BookService bookService) {
+        this.bookService = bookService;
+    }
 
     public String callWelcomeMessage() {
         return welcomeMassage;
@@ -29,5 +42,13 @@ public class BibliotecaService {
         System.out.printf("Please choose an option: ");
         option = read.nextInt();
         return option;
+    }
+
+    public long chooseBookToCheckout(){
+        Scanner read = new Scanner(System.in);
+        int identifierBook;
+        System.out.printf("Entry with book number: ");
+        identifierBook = read.nextInt();
+        return identifierBook;
     }
 }

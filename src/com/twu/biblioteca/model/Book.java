@@ -4,16 +4,19 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Book {
+    private Long identifier;
     private String author;
     private String title;
     private LocalDate yearPublished;
     private boolean checkout;
+    private static long SEQUENCE;
 
     public Book(String author, String title, LocalDate yearPublished, boolean checkout) {
         this.author = author;
         this.title = title;
         this.yearPublished = yearPublished;
         this.checkout = checkout;
+        this.identifier = ++SEQUENCE;
     }
 
     public LocalDate getYearPublished() {
@@ -48,8 +51,12 @@ public class Book {
         this.author = author;
     }
 
+    public Long getIdentifier() {
+        return identifier;
+    }
+
     @Override
     public String toString() {
-        return author + " | " + yearPublished.format(DateTimeFormatter.ISO_DATE);
+        return identifier + " | " + author + " | " + yearPublished.format(DateTimeFormatter.ISO_DATE);
     }
 }

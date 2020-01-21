@@ -26,4 +26,11 @@ public class BookServiceTest {
         bookService.checkoutBook(book);
         assertEquals(true, book.isCheckout());
     }
+
+    public void verifyNumberOfBookWithSuccess(){
+        List<Book> listOfBooks = bookService.getListOfBooks();
+        Book book = new Book("Bruce Lee", "Run two", LocalDate.of(2019, 02, 12), false);
+        listOfBooks.add(book);
+        assertNotNull(bookService.findBookWithIdentifier(1));
+    }
 }

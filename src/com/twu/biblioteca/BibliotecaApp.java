@@ -11,10 +11,11 @@ import java.util.List;
 public class BibliotecaApp {
 
     public static void main(String[] args) {
-        BibliotecaService bibliotecaService = new BibliotecaService();
         BookRepository bookRepository = new BookRepository();
         BookService bookService = new BookService(bookRepository);
-        List<Book> listOfBooks = bookService.getListOfBooks();
+        BibliotecaService bibliotecaService = new BibliotecaService(bookService);
+
+        List<Book> listOfBooks = bibliotecaService.getBookService().getListOfBooks();
         Book bookTDD = new Book("Nora Roberts", "TDD", LocalDate.of(2019, 12, 27), false);
         Book bookDev = new Book("Jorge Amado", "Desenvolvimento", LocalDate.of(2018, 02, 17), false);
         listOfBooks.add(bookDev);
@@ -25,13 +26,18 @@ public class BibliotecaApp {
         System.out.println(bibliotecaService.listMenuOptions());
 
         int option = 0;
+        long bookNumber = 0;
         while (option != 3) {
             option = bibliotecaService.chooseMenuOption();
             if (option == 1) {
                 bibliotecaService.listBooksWithColumns(listOfBooks).forEach(book -> System.out.println(book));
-            } else if (option == 2){
-                System.out.println("Entry with book number: ");
-            }else {
+            } else if (option == 2) {
+                bookNumber = bibliotecaService.chooseBookToCheckout();
+                Book bookToCheck = bibliotecaService.getBookService().findBookWithIdentifier(bookNumber);
+                if (bookToCheck != null) {
+                    bibliotecaService.getBookService().checkoutBook(bookToCheck);
+                }
+            } else {
                 System.out.println("Please select valid option");
             }
         }

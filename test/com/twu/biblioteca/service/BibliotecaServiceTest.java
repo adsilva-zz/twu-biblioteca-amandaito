@@ -11,9 +11,9 @@ import static org.junit.Assert.*;
 
 public class BibliotecaServiceTest {
 
-    private BibliotecaService bibliotecaService = new BibliotecaService();
     private BookRepository bookRepository = new BookRepository();
     private BookService bookService = new BookService(bookRepository);
+    private BibliotecaService bibliotecaService = new BibliotecaService(bookService);
 
     @Test
     public void welcomeSuccessTest() {
@@ -22,7 +22,7 @@ public class BibliotecaServiceTest {
 
     @Test
     public void listBooksWithAuthorAndPublication() {
-        String dataBook = "Nora Roberts | 2019-12-27";
+        String dataBook = "1 | Nora Roberts | 2019-12-27";
         List<Book> listOfBooks = bookService.getListOfBooks();
         Book book = new Book("Nora Roberts", "TDD", LocalDate.of(2019, 12, 27), false);
         assertNotNull(listOfBooks);
