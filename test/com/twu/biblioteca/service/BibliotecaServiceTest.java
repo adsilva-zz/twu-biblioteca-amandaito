@@ -24,7 +24,7 @@ public class BibliotecaServiceTest {
     public void listBooksWithAuthorAndPublication() {
         String dataBook = "Nora Roberts | 2019-12-27";
         List<Book> listOfBooks = bookService.getlistOfBooks();
-        Book book = new Book("Nora Roberts", "TDD", LocalDate.of(2019, 12, 27));
+        Book book = new Book("Nora Roberts", "TDD", LocalDate.of(2019, 12, 27), false);
         assertNotNull(listOfBooks);
         listOfBooks.add(book);
         assertTrue(listOfBooks.size() == 1);

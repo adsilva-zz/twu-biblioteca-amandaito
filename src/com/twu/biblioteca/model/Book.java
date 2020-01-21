@@ -7,11 +7,13 @@ public class Book {
     private String author;
     private String title;
     private LocalDate yearPublished;
+    private boolean checkout;
 
-    public Book(String author, String title, LocalDate yearPublished) {
+    public Book(String author, String title, LocalDate yearPublished, boolean checkout) {
         this.author = author;
         this.title = title;
         this.yearPublished = yearPublished;
+        this.checkout = checkout;
     }
 
     public LocalDate getYearPublished() {
@@ -28,6 +30,14 @@ public class Book {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public boolean isCheckout() {
+        return checkout;
+    }
+
+    public void setCheckout(boolean checkout) {
+        this.checkout = checkout;
     }
 
     public String getAuthor() {

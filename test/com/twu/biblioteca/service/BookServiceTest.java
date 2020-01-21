@@ -22,7 +22,8 @@ public class BookServiceTest {
 
     @Test
     public void checkoutBookWithSuccess(){
-        Book book = new Book("Bruce Lee", "Run two", LocalDate.of(2019, 02, 12));
-        assertEquals(true, book.getCheckout());
+        Book book = new Book("Bruce Lee", "Run two", LocalDate.of(2019, 02, 12), false);
+        bookService.checkoutBook(book);
+        assertEquals(true, book.isCheckout());
     }
 }

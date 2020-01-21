@@ -16,8 +16,8 @@ public class BibliotecaApp {
         BookRepository bookRepository = new BookRepository();
         BookService bookService = new BookService(bookRepository);
         List<Book> listOfBooks = bookService.getlistOfBooks();
-        Book bookTDD = new Book("Nora Roberts", "TDD", LocalDate.of(2019, 12, 27));
-        Book bookDev = new Book("Jorge Amado", "Desenvolvimento", LocalDate.of(2018, 02, 17));
+        Book bookTDD = new Book("Nora Roberts", "TDD", LocalDate.of(2019, 12, 27), false);
+        Book bookDev = new Book("Jorge Amado", "Desenvolvimento", LocalDate.of(2018, 02, 17), false);
         listOfBooks.add(bookDev);
         listOfBooks.add(bookTDD);
 
