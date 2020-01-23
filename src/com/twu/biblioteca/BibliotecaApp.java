@@ -46,6 +46,7 @@ public class BibliotecaApp {
                 bookFound = bibliotecaService.findBookWithIdentifier(bookNumber);
                 if (bookFound != null && bookFound.isCheckout()) {
                     bibliotecaService.returnBook(bookFound);
+                    System.out.println(bibliotecaService.getSUCCESS_RETURN());
                 }
             } else {
                 System.out.println("Please select valid option");
