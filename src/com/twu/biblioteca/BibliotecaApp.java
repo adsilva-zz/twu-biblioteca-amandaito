@@ -1,7 +1,7 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.model.Book;
-import com.twu.biblioteca.repository.BookRepository;
+import com.twu.biblioteca.repository.BookRepositoryImpl;
 import com.twu.biblioteca.service.BookService;
 import com.twu.biblioteca.service.BibliotecaService;
 
@@ -11,7 +11,7 @@ import java.util.List;
 public class BibliotecaApp {
 
     public static void main(String[] args) {
-        BookRepository bookRepository = new BookRepository();
+        BookRepositoryImpl bookRepository = new BookRepositoryImpl();
         BookService bookService = new BookService(bookRepository);
         BibliotecaService bibliotecaService = new BibliotecaService(bookService);
 

@@ -1,20 +1,20 @@
 package com.twu.biblioteca.service;
 
 import com.twu.biblioteca.model.Book;
-import com.twu.biblioteca.repository.BookRepository;
+import com.twu.biblioteca.repository.BookRepositoryImpl;
 
 import java.util.List;
 
 public class BookService {
 
-    private BookRepository bookRepository;
+    private BookRepositoryImpl bookRepository;
 
-    public BookService(BookRepository bookRepository){
+    public BookService(BookRepositoryImpl bookRepository){
         this.bookRepository = bookRepository;
     }
 
     public List<Book> getListOfBooks() {
-        return bookRepository.getListOfBook();
+        return bookRepository.getListOfBooks();
     }
 
     public void checkoutBook(Book book){

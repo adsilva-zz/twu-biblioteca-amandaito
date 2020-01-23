@@ -1,7 +1,7 @@
 package com.twu.biblioteca.service;
 
 import com.twu.biblioteca.model.Book;
-import com.twu.biblioteca.repository.BookRepository;
+import com.twu.biblioteca.repository.BookRepositoryImpl;
 import org.junit.Test;
 
 import java.time.LocalDate;
@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 
 public class BookServiceTest {
 
-    private BookRepository bookRepository = new BookRepository();
+    private BookRepositoryImpl bookRepository = new BookRepositoryImpl();
     private BookService bookService = new BookService(bookRepository);
 
     @Test
