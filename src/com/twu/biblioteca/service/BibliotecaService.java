@@ -13,6 +13,7 @@ public class BibliotecaService {
     private final String CHOOSE_OPTION = "Please choose an option: ";
     private final String CHOOSE_BOOK = "Entry with book number for checkout: ";
     private final String SUCCESS_CHECKOUT = "Thank you! Enjoy the book";
+    private final String UN_SUCCESSFUL_CHECKOUT = "Sorry, that book is not available";
     private BookService bookService;
 
     public BibliotecaService(BookService bookService){
@@ -59,7 +60,11 @@ public class BibliotecaService {
         return this.bookService.getListOfBooks();
     }
 
-    public String successCheckoutBook(){
+    public String getSUCCESS_CHECKOUT(){
         return this.SUCCESS_CHECKOUT;
+    }
+
+    public String getUN_SUCCESSFUL_CHECKOUT(){
+        return this.UN_SUCCESSFUL_CHECKOUT;
     }
 }

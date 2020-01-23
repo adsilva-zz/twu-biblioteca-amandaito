@@ -34,9 +34,11 @@ public class BibliotecaApp {
             } else if (option == 2) {
                 bookNumber = bibliotecaService.chooseBookToCheckout();
                 Book bookToCheck = bibliotecaService.findBookWithIdentifier(bookNumber);
-                if (bookToCheck != null) {
+                if (bookToCheck != null && !bookToCheck.isCheckout()) {
                     bibliotecaService.checkoutBook(bookToCheck);
-                    System.out.println(bibliotecaService.successCheckoutBook());
+                    System.out.println(bibliotecaService.getSUCCESS_CHECKOUT());
+                }else{
+                    System.out.println(bibliotecaService.getUN_SUCCESSFUL_CHECKOUT());
                 }
             } else {
                 System.out.println("Please select valid option");

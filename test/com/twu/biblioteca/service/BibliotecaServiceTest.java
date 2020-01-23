@@ -45,6 +45,12 @@ public class BibliotecaServiceTest {
     @Test
     public void showMessageCheckoutBookWithSuccess(){
         String successMessage = "Thank you! Enjoy the book";
-        assertEquals(successMessage, bibliotecaService.successCheckoutBook());
+        assertEquals(successMessage, bibliotecaService.getSUCCESS_CHECKOUT());
+    }
+
+    @Test
+    public void showMessageCheckoutBookWithUn_Successful(){
+        String successMessage = "Sorry, that book is not available";
+        assertEquals(successMessage, bibliotecaService.getUN_SUCCESSFUL_CHECKOUT());
     }
 }
