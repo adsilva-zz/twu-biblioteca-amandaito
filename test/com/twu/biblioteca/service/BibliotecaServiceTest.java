@@ -23,7 +23,7 @@ public class BibliotecaServiceTest {
     @Test
     public void listBooksWithAuthorAndPublication() {
         String dataBook = "1 | Nora Roberts | 2019-12-27";
-        List<Book> listOfBooks = bookService.getListOfBooks();
+        List<Book> listOfBooks = bibliotecaService.getListOfBooks();
         Book book = new Book("Nora Roberts", "TDD", LocalDate.of(2019, 12, 27), false);
         assertNotNull(listOfBooks);
         listOfBooks.add(book);

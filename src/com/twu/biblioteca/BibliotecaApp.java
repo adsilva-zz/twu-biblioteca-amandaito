@@ -15,7 +15,7 @@ public class BibliotecaApp {
         BookService bookService = new BookService(bookRepository);
         BibliotecaService bibliotecaService = new BibliotecaService(bookService);
 
-        List<Book> listOfBooks = bibliotecaService.getBookService().getListOfBooks();
+        List<Book> listOfBooks = bibliotecaService.getListOfBooks();
         Book bookTDD = new Book("Nora Roberts", "TDD", LocalDate.of(2019, 12, 27), false);
         Book bookDev = new Book("Jorge Amado", "Desenvolvimento", LocalDate.of(2018, 02, 17), false);
         listOfBooks.add(bookDev);
@@ -33,9 +33,10 @@ public class BibliotecaApp {
                 bibliotecaService.listBooksWithColumns(listOfBooks).forEach(book -> System.out.println(book));
             } else if (option == 2) {
                 bookNumber = bibliotecaService.chooseBookToCheckout();
-                Book bookToCheck = bibliotecaService.getBookService().findBookWithIdentifier(bookNumber);
+                Book bookToCheck = bibliotecaService.findBookWithIdentifier(bookNumber);
                 if (bookToCheck != null) {
-                    bibliotecaService.getBookService().checkoutBook(bookToCheck);
+                    bibliotecaService.checkoutBook(bookToCheck);
+
                 }
             } else {
                 System.out.println("Please select valid option");
