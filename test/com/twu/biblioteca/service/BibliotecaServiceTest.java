@@ -41,4 +41,10 @@ public class BibliotecaServiceTest {
         String menuOptions = "Menu \n1 - List of books\n2 - Checkout books \n3 - Quit";
         assertEquals(menuOptions, bibliotecaService.listMenuOptions());
     }
+
+    @Test
+    public void showMessageCheckoutBookWithSuccess(){
+        String successMessage = "Thank you! Enjoy the book";
+        assertEquals(successMessage, bibliotecaService.successCheckoutBook());
+    }
 }

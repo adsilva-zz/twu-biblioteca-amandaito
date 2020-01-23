@@ -11,7 +11,8 @@ public class BibliotecaService {
     private final String WELCOME_MESSAGE = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore";
     private final String MENU_OPTIONS = "Menu \n1 - List of books\n2 - Checkout books \n3 - Quit";
     private final String CHOOSE_OPTION = "Please choose an option: ";
-    private final String CHOOSE_BOOK = "Entry with book number: ";
+    private final String CHOOSE_BOOK = "Entry with book number for checkout: ";
+    private final String SUCCESS_CHECKOUT = "Thank you! Enjoy the book";
     private BookService bookService;
 
     public BibliotecaService(BookService bookService){
@@ -56,5 +57,9 @@ public class BibliotecaService {
 
     public List<Book> getListOfBooks(){
         return this.bookService.getListOfBooks();
+    }
+
+    public String successCheckoutBook(){
+        return this.SUCCESS_CHECKOUT;
     }
 }
