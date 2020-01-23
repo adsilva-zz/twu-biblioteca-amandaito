@@ -21,11 +21,16 @@ public class BibliotecaServiceTest {
     }
 
     @Test
+    public void listBooksWithSuccess() {
+        List<Book> listOfBooks = bibliotecaService.getListOfBooks();
+        assertNotNull(listOfBooks);
+    }
+
+    @Test
     public void listBooksWithAuthorAndPublication() {
         String dataBook = "1 | Nora Roberts | 2019-12-27";
         List<Book> listOfBooks = bibliotecaService.getListOfBooks();
         Book book = new Book("Nora Roberts", "TDD", LocalDate.of(2019, 12, 27), false);
-        assertNotNull(listOfBooks);
         listOfBooks.add(book);
         assertTrue(listOfBooks.size() == 1);
         assertEquals(dataBook, bibliotecaService.listBooksWithColumns(listOfBooks).get(0));

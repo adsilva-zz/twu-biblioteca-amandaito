@@ -27,10 +27,11 @@ public class BookServiceTest {
         assertEquals(true, book.isCheckout());
     }
 
+    @Test
     public void verifyNumberOfBookWithSuccess(){
         List<Book> listOfBooks = bookService.getListOfBooks();
         Book book = new Book("Bruce Lee", "Run two", LocalDate.of(2019, 02, 12), false);
         listOfBooks.add(book);
-        assertNotNull(bookService.findBookWithIdentifier(1));
+        assertNotNull(bookService.findBookWithIdentifier(book.getIdentifier()));
     }
 }
