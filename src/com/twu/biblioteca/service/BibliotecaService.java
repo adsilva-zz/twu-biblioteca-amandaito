@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class BibliotecaService {
 
     private final String WELCOME_MESSAGE = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore";
-    private final String MENU_OPTIONS = "Menu \n1 - List of books\n2 - Checkout books \n3 - Quit";
+    private final String MENU_OPTIONS = "Menu \n1 - List of books\n2 - Checkout book \n3 - Return book \n4 - Quit";
     private final String CHOOSE_OPTION = "Please choose an option: ";
     private final String CHOOSE_BOOK = "Entry with book number for checkout: ";
     private final String SUCCESS_CHECKOUT = "Thank you! Enjoy the book";
@@ -50,6 +50,10 @@ public class BibliotecaService {
 
     public void checkoutBook(Book book){
         this.bookService.checkoutBook(book);
+    }
+
+    public void returnBook(Book book){
+        this.bookService.returnBook(book);
     }
 
     public Book findBookWithIdentifier(Long numberOfBook){

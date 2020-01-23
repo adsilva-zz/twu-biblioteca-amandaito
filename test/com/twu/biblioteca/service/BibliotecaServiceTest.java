@@ -38,7 +38,7 @@ public class BibliotecaServiceTest {
 
     @Test
     public void showMenuOptions(){
-        String menuOptions = "Menu \n1 - List of books\n2 - Checkout books \n3 - Quit";
+        String menuOptions = "Menu \n1 - List of books\n2 - Checkout book \n3 - Return book \n4 - Quit";
         assertEquals(menuOptions, bibliotecaService.listMenuOptions());
     }
 

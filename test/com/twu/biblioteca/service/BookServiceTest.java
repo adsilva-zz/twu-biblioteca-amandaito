@@ -34,4 +34,11 @@ public class BookServiceTest {
         listOfBooks.add(book);
         assertNotNull(bookService.findBookWithIdentifier(book.getIdentifier()));
     }
+
+    @Test
+    public void returnBookWithSuccess(){
+        Book book = new Book("Bruce Lee", "Run two", LocalDate.of(2019, 02, 12), true);
+        bookService.returnBook(book);
+        assertEquals(false, book.isCheckout());
+    }
 }

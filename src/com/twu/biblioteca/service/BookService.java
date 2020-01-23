@@ -24,4 +24,8 @@ public class BookService {
     public Book findBookWithIdentifier(long identifier){
         return getListOfBooks().stream().filter(book -> book.getIdentifier() == identifier).findFirst().orElse(null);
     }
+
+    public void returnBook(Book book){
+        book.setCheckout(false);
+    }
 }

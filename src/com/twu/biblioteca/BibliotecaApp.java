@@ -27,18 +27,25 @@ public class BibliotecaApp {
 
         int option = 0;
         long bookNumber = 0;
-        while (option != 3) {
+        Book bookFound;
+        while (option != 4) {
             option = bibliotecaService.chooseMenuOption();
             if (option == 1) {
                 bibliotecaService.listBooksWithColumns(listOfBooks).forEach(book -> System.out.println(book));
             } else if (option == 2) {
                 bookNumber = bibliotecaService.chooseBookToCheckout();
-                Book bookToCheck = bibliotecaService.findBookWithIdentifier(bookNumber);
-                if (bookToCheck != null && !bookToCheck.isCheckout()) {
-                    bibliotecaService.checkoutBook(bookToCheck);
+                bookFound = bibliotecaService.findBookWithIdentifier(bookNumber);
+                if (bookFound != null && !bookFound.isCheckout()) {
+                    bibliotecaService.checkoutBook(bookFound);
                     System.out.println(bibliotecaService.getSUCCESS_CHECKOUT());
-                }else{
+                } else {
                     System.out.println(bibliotecaService.getUN_SUCCESSFUL_CHECKOUT());
+                }
+            } else if (option == 3) {
+                bookNumber = bibliotecaService.chooseBookToCheckout();
+                bookFound = bibliotecaService.findBookWithIdentifier(bookNumber);
+                if (bookFound != null && bookFound.isCheckout()) {
+                    bibliotecaService.returnBook(bookFound);
                 }
             } else {
                 System.out.println("Please select valid option");
