@@ -1,15 +1,16 @@
 package com.twu.biblioteca.service;
 
 import com.twu.biblioteca.model.Book;
+import com.twu.biblioteca.repository.BookRepository;
 import com.twu.biblioteca.repository.BookRepositoryImpl;
 
 import java.util.List;
 
 public class BookService {
 
-    private BookRepositoryImpl bookRepository;
+    private BookRepository bookRepository;
 
-    public BookService(BookRepositoryImpl bookRepository){
+    public BookService(BookRepository bookRepository){
         this.bookRepository = bookRepository;
     }
 
@@ -22,7 +23,7 @@ public class BookService {
     }
 
     public Book findBookWithIdentifier(long identifier){
-        return getListOfBooks().stream().filter(book -> book.getIdentifier() == identifier).findFirst().orElse(null);
+        return getListOfBooks().stream().filter(book -> book.getIdentifier().equals(identifier)).findFirst().orElse(null);
     }
 
     public void returnBook(Book book){

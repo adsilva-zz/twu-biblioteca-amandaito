@@ -57,6 +57,12 @@ public class BibliotecaServiceTest {
     @Test
     public void showMessageReturnBookWithSuccess(){
         String successMessage = "Thank you for returning the book";
-        assertEquals(successMessage, bibliotecaService.getSUCCESS_RETURN());
+        assertEquals(successMessage, bibliotecaService.getSUCCESSFUL_RETURN());
+    }
+
+    @Test
+    public void showMessageReturnBookWithUn_Success(){
+        String successMessage = "That is not a valid book to return";
+        assertEquals(successMessage, bibliotecaService.getUN_SUCCESSFUL_RETURN());
     }
 }

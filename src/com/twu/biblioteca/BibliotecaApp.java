@@ -27,7 +27,7 @@ public class BibliotecaApp {
 
         int option = 0;
         long bookNumber = 0;
-        Book bookFound;
+        Book bookFound = null;
         while (option != 4) {
             option = bibliotecaService.chooseMenuOption();
             if (option == 1) {
@@ -46,7 +46,9 @@ public class BibliotecaApp {
                 bookFound = bibliotecaService.findBookWithIdentifier(bookNumber);
                 if (bookFound != null && bookFound.isCheckout()) {
                     bibliotecaService.returnBook(bookFound);
-                    System.out.println(bibliotecaService.getSUCCESS_RETURN());
+                    System.out.println(bibliotecaService.getSUCCESSFUL_RETURN());
+                }else {
+                    System.out.println(bibliotecaService.getUN_SUCCESSFUL_RETURN());
                 }
             } else {
                 System.out.println("Please select valid option");

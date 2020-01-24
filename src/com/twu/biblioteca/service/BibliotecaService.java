@@ -11,11 +11,11 @@ public class BibliotecaService {
     private final String WELCOME_MESSAGE = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore";
     private final String MENU_OPTIONS = "Menu \n1 - List of books\n2 - Checkout book \n3 - Return book \n4 - Quit";
     private final String CHOOSE_OPTION = "Please choose an option: ";
-    private final String CHOOSE_BOOK = "Entry with book number for checkout: ";
+    private final String CHOOSE_BOOK = "Entry with book number: ";
     private final String SUCCESS_CHECKOUT = "Thank you! Enjoy the book";
     private final String UN_SUCCESSFUL_CHECKOUT = "Sorry, that book is not available";
-    private final String SUCCESS_RETURN = "Thank you for returning the book";
-
+    private final String SUCCESSFUL_RETURN = "Thank you for returning the book";
+    private final String UN_SUCCESSFUL_RETURN = "That is not a valid book to return";
     private BookService bookService;
 
     public BibliotecaService(BookService bookService) {
@@ -74,7 +74,11 @@ public class BibliotecaService {
         return this.UN_SUCCESSFUL_CHECKOUT;
     }
 
-    public String getSUCCESS_RETURN() {
-        return this.SUCCESS_RETURN;
+    public String getSUCCESSFUL_RETURN() {
+        return this.SUCCESSFUL_RETURN;
+    }
+
+    public String getUN_SUCCESSFUL_RETURN(){
+        return this.UN_SUCCESSFUL_RETURN;
     }
 }
