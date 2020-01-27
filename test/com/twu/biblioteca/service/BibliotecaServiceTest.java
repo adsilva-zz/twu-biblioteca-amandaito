@@ -2,18 +2,26 @@ package com.twu.biblioteca.service;
 
 import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.repository.BookRepositoryImpl;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
 
 public class BibliotecaServiceTest {
-
-    private BookRepositoryImpl bookRepository = new BookRepositoryImpl();
+    private List<Book> listOfBooks = new ArrayList<Book>();
+    private BookRepositoryImpl bookRepository = new BookRepositoryImpl(listOfBooks);
     private BookService bookService = new BookService(bookRepository);
     private BibliotecaService bibliotecaService = new BibliotecaService(bookService);
+
+    @After
+    public void finalize() {
+        listOfBooks.clear();
+    }
 
     @Test
     public void welcomeSuccessTest() {
@@ -29,9 +37,8 @@ public class BibliotecaServiceTest {
     @Test
     public void listBooksWithAuthorAndPublication() {
         String dataBook = "1 | Nora Roberts | 2019-12-27";
-        List<Book> listOfBooks = bibliotecaService.getListOfBooks();
         Book book = new Book("Nora Roberts", "TDD", LocalDate.of(2019, 12, 27), false);
-        listOfBooks.add(book);
+        bookService.getListOfBooks().add(book);
         assertTrue(listOfBooks.size() == 1);
         assertEquals(dataBook, bibliotecaService.listBooksWithColumns(listOfBooks).get(0));
     }

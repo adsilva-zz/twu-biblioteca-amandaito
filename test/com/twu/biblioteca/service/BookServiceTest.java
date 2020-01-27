@@ -2,17 +2,24 @@ package com.twu.biblioteca.service;
 
 import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.repository.BookRepositoryImpl;
+import org.junit.After;
 import org.junit.Test;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
 
 public class BookServiceTest {
-
-    private BookRepositoryImpl bookRepository = new BookRepositoryImpl();
+    private List<Book> listOfBooks = new ArrayList<Book>();
+    private BookRepositoryImpl bookRepository = new BookRepositoryImpl(listOfBooks);
     private BookService bookService = new BookService(bookRepository);
+
+    @After
+    public void finalize() {
+        listOfBooks.clear();
+    }
 
     @Test
     public void listBooksWithSuccess() {
@@ -29,9 +36,8 @@ public class BookServiceTest {
 
     @Test
     public void verifyNumberOfBookWithSuccess(){
-        List<Book> listOfBooks = bookService.getListOfBooks();
         Book book = new Book("Bruce Lee", "Run two", LocalDate.of(2019, 02, 12), false);
-        listOfBooks.add(book);
+        bookService.getListOfBooks().add(book);
         assertNotNull(bookService.findBookWithIdentifier(book.getIdentifier()));
     }
 

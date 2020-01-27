@@ -9,8 +9,9 @@ public class BookRepositoryImpl implements BookRepository{
 
     private List<Book> listOfBook;
 
-    public BookRepositoryImpl() {
-        this.listOfBook = new ArrayList<Book>();
+    public BookRepositoryImpl(List<Book> listOfBook) {
+
+        this.listOfBook = listOfBook;
     }
 
     @Override

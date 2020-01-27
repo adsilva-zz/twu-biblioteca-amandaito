@@ -6,16 +6,17 @@ import com.twu.biblioteca.service.BookService;
 import com.twu.biblioteca.service.BibliotecaService;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BibliotecaApp {
 
     public static void main(String[] args) {
-        BookRepositoryImpl bookRepository = new BookRepositoryImpl();
+        List<Book> listOfBooks = new ArrayList<Book>();
+        BookRepositoryImpl bookRepository = new BookRepositoryImpl(listOfBooks);
         BookService bookService = new BookService(bookRepository);
         BibliotecaService bibliotecaService = new BibliotecaService(bookService);
 
-        List<Book> listOfBooks = bibliotecaService.getListOfBooks();
         Book bookTDD = new Book("Nora Roberts", "TDD", LocalDate.of(2019, 12, 27), false);
         Book bookDev = new Book("Jorge Amado", "Desenvolvimento", LocalDate.of(2018, 02, 17), false);
         listOfBooks.add(bookDev);
@@ -34,7 +35,7 @@ public class BibliotecaApp {
                 bibliotecaService.interactionToCheckoutBook();
             } else if (option == 3) {
                 bibliotecaService.interactionToReturnBook();
-            } else {
+            } else if (option != 4){
                 System.out.println("Please select valid option");
             }
         }
