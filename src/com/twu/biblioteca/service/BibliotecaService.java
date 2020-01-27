@@ -42,12 +42,34 @@ public class BibliotecaService {
         return option;
     }
 
-    public long chooseBookToCheckout() {
+    public long chooseBook() {
         Scanner read = new Scanner(System.in);
         int identifierBook;
         System.out.printf(CHOOSE_BOOK);
         identifierBook = read.nextInt();
         return identifierBook;
+    }
+
+    public void interactionToCheckoutBook(){
+        long bookNumber = this.chooseBook();
+        Book bookFound = this.findBookWithIdentifier(bookNumber);
+        if (bookFound != null && !bookFound.isCheckout()) {
+            this.checkoutBook(bookFound);
+            System.out.println(this.getSUCCESS_CHECKOUT());
+        } else {
+            System.out.println(this.getUN_SUCCESSFUL_CHECKOUT());
+        }
+    }
+
+    public void interactionToReturnBook(){
+        long bookNumber = this.chooseBook();
+        Book bookFound = this.findBookWithIdentifier(bookNumber);
+        if (bookFound != null && bookFound.isCheckout()) {
+            this.returnBook(bookFound);
+            System.out.println(this.getSUCCESSFUL_RETURN());
+        }else {
+            System.out.println(this.getUN_SUCCESSFUL_RETURN());
+        }
     }
 
     public void checkoutBook(Book book) {
