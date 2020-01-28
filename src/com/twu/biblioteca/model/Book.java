@@ -57,6 +57,6 @@ public class Book {
 
     @Override
     public String toString() {
-        return identifier + " | " + author + " | " + yearPublished.format(DateTimeFormatter.ISO_DATE);
+        return identifier + " | " + title +" | " + author + " | " + yearPublished.format(DateTimeFormatter.ISO_DATE);
     }
 }

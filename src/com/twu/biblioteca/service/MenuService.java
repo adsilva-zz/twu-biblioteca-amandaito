@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class MenuService {
 
     private final String WELCOME_MESSAGE = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore";
-    private final String MENU_OPTIONS = "Menu \n1 - List of books\n2 - Checkout book \n3 - Return book \n4 - Quit";
+    private final String MENU_OPTIONS = "Menu\n1 - List of books\n2 - List of movies\n3 - Checkout book \n4 - Return book \n5 - Quit";
     private final String CHOOSE_OPTION = "Please choose an option: ";
     private final String CHOOSE_BOOK = "Entry with book number: ";
     private BibliotecaService bibliotecaService;

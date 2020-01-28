@@ -1,6 +1,7 @@
 package com.twu.biblioteca.service;
 
 import com.twu.biblioteca.model.Book;
+import com.twu.biblioteca.model.Movie;
 
 import java.util.List;
 import java.util.Scanner;
@@ -13,13 +14,19 @@ public class BibliotecaService {
     private final String SUCCESSFUL_RETURN = "Thank you for returning the book";
     private final String UN_SUCCESSFUL_RETURN = "That is not a valid book to return";
     private BookService bookService;
+    private MovieService movieService;
 
-    public BibliotecaService(BookService bookService) {
+    public BibliotecaService(BookService bookService, MovieService movieService) {
         this.bookService = bookService;
+        this.movieService = movieService;
     }
 
     public List<String> listBooksWithColumns(List<Book> listOfBooks) {
         return listOfBooks.stream().filter(book -> !book.isCheckout()).map(Book::toString).collect(Collectors.toList());
+    }
+
+    public List<String> listOfMovies(List<Movie> listOfMovies) {
+        return listOfMovies.stream().map(Movie::toString).collect(Collectors.toList());
     }
 
     public void checkoutBook(Book book) {
@@ -37,6 +44,8 @@ public class BibliotecaService {
     public List<Book> getListOfBooks() {
         return this.bookService.getListOfBooks();
     }
+
+    public List<Movie> getListOfMovies(){return this.movieService.getListOfMovies();}
 
     public String getSUCCESS_CHECKOUT() {
         return this.SUCCESS_CHECKOUT;
