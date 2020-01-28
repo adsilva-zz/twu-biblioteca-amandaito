@@ -17,15 +17,11 @@ public class BibliotecaServiceTest {
     private BookRepositoryImpl bookRepository = new BookRepositoryImpl(listOfBooks);
     private BookService bookService = new BookService(bookRepository);
     private BibliotecaService bibliotecaService = new BibliotecaService(bookService);
+    private MenuService menuService = new MenuService(bibliotecaService);
 
     @After
     public void finalize() {
         listOfBooks.clear();
-    }
-
-    @Test
-    public void welcomeSuccessTest() {
-        assertEquals("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore", bibliotecaService.callWelcomeMessage());
     }
 
     @Test
@@ -39,14 +35,8 @@ public class BibliotecaServiceTest {
         String dataBook = "1 | Nora Roberts | 2019-12-27";
         Book book = new Book("Nora Roberts", "TDD", LocalDate.of(2019, 12, 27), false);
         bookService.getListOfBooks().add(book);
-        assertTrue(listOfBooks.size() == 1);
+        assertEquals(listOfBooks.size(), 1);
         assertEquals(dataBook, bibliotecaService.listBooksWithColumns(listOfBooks).get(0));
-    }
-
-    @Test
-    public void showMenuOptions(){
-        String menuOptions = "Menu \n1 - List of books\n2 - Checkout book \n3 - Return book \n4 - Quit";
-        assertEquals(menuOptions, bibliotecaService.listMenuOptions());
     }
 
     @Test

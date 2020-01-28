@@ -23,7 +23,8 @@ public class BookService {
     }
 
     public Book findBookWithIdentifier(long identifier){
-        return getListOfBooks().stream().filter(book -> book.getIdentifier().equals(identifier)).findFirst().orElse(null);
+        return getListOfBooks().stream()
+                .filter(book -> book.getIdentifier().equals(identifier)).findFirst().orElse(null);
     }
 
     public void returnBook(Book book){
