@@ -29,21 +29,24 @@ public class BookServiceTest {
 
     @Test
     public void checkoutBookWithSuccess(){
-        Book book = new Book("Bruce Lee", "Run two", LocalDate.of(2019, 02, 12), false);
+        Book book = new Book("Bruce Lee", "Run two",
+                LocalDate.of(2019, 02, 12), false);
         bookService.checkoutBook(book);
         assertEquals(true, book.isCheckout());
     }
 
     @Test
     public void verifyNumberOfBookWithSuccess(){
-        Book book = new Book("Bruce Lee", "Run two", LocalDate.of(2019, 02, 12), false);
+        Book book = new Book("Bruce Lee", "Run two",
+                LocalDate.of(2019, 02, 12), false);
         bookService.getListOfBooks().add(book);
         assertNotNull(bookService.findBookWithIdentifier(book.getIdentifier()));
     }
 
     @Test
     public void returnBookWithSuccess(){
-        Book book = new Book("Bruce Lee", "Run two", LocalDate.of(2019, 02, 12), true);
+        Book book = new Book("Bruce Lee", "Run two",
+                LocalDate.of(2019, 02, 12), true);
         bookService.returnBook(book);
         assertEquals(false, book.isCheckout());
     }

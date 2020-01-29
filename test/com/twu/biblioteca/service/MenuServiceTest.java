@@ -26,7 +26,8 @@ public class MenuServiceTest {
 
     @Test
     public void welcomeSuccessTest() {
-        assertEquals("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore", menuService.callWelcomeMessage());
+        assertEquals("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore",
+                menuService.callWelcomeMessage());
     }
 
     @Test
