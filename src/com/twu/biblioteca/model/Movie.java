@@ -10,14 +10,16 @@ public class Movie {
     private LocalDate year;
     private String director;
     private Rating rating;
+    private boolean checkout;
     private static long SEQUENCE;
 
-    public Movie(String name, LocalDate year, String director, Rating rating) {
+    public Movie(String name, LocalDate year, String director, Rating rating, Boolean checkout) {
         this.identifier = ++SEQUENCE;
         this.name = name;
         this.year = year;
         this.director = director;
         this.rating = rating;
+        this.checkout = checkout;
     }
 
     public Long getIdentifier() {
@@ -54,6 +56,14 @@ public class Movie {
 
     public void setRating(Rating rating) {
         this.rating = rating;
+    }
+
+    public boolean isCheckout() {
+        return checkout;
+    }
+
+    public void setCheckout(boolean checkout) {
+        this.checkout = checkout;
     }
 
     @Override

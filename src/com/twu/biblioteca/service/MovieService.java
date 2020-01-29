@@ -20,4 +20,13 @@ public class MovieService {
     public List<Movie> getListOfMovies(){
         return this.movieRepository.getListOfMovies();
     }
+
+    public void checkoutMovie(Movie movie){
+        movie.setCheckout(true);
+    }
+
+    public Movie findBookWithIdentifier(Long identifier){
+        return getListOfMovies().stream().filter(movie -> movie.getIdentifier().equals(identifier))
+                .findFirst().orElse(null);
+    }
 }

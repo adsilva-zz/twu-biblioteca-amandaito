@@ -1,15 +1,21 @@
 package com.twu.biblioteca.service;
 
 import com.twu.biblioteca.model.Book;
+import com.twu.biblioteca.model.Movie;
 
 import java.util.Scanner;
 
 public class MenuService {
 
     private final String WELCOME_MESSAGE = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore";
-    private final String MENU_OPTIONS = "Menu\n1 - List of books\n2 - List of movies\n3 - Checkout book \n4 - Return book \n5 - Quit";
+
+    private final String MENU_OPTIONS = "Menu\n1 - List of books\n2 - List of movies\n3 - Checkout book \n4 - Return book " +
+            "\n5 - Checkout Movie \n6 - Quit";
+
     private final String CHOOSE_OPTION = "Please choose an option: ";
-    private final String CHOOSE_BOOK = "Entry with book number: ";
+
+    private final String CHOOSE_BOOK = "Entry with number: ";
+
     private BibliotecaService bibliotecaService;
 
     public MenuService(BibliotecaService bibliotecaService) {
@@ -34,7 +40,7 @@ public class MenuService {
         return option;
     }
 
-    public long chooseBook() {
+    public long choose() {
         Scanner read = new Scanner(System.in);
         int identifierBook;
 
@@ -45,26 +51,38 @@ public class MenuService {
     }
 
     public void interactionToCheckoutBook(){
-        long bookNumber = this.chooseBook();
+        long bookNumber = this.choose();
         Book bookFound = bibliotecaService.findBookWithIdentifier(bookNumber);
 
         if (bookFound != null && !bookFound.isCheckout()) {
             bibliotecaService.checkoutBook(bookFound);
-            System.out.println(bibliotecaService.getSUCCESS_CHECKOUT());
+            System.out.println(bibliotecaService.getSUCCESS_CHECKOUT_BOOK());
         } else {
-            System.out.println(bibliotecaService.getUN_SUCCESSFUL_CHECKOUT());
+            System.out.println(bibliotecaService.getUN_SUCCESSFUL_CHECKOUT_BOOK());
         }
     }
 
     public void interactionToReturnBook(){
-        long bookNumber = this.chooseBook();
+        long bookNumber = this.choose();
         Book bookFound = bibliotecaService.findBookWithIdentifier(bookNumber);
 
         if (bookFound != null && bookFound.isCheckout()) {
             bibliotecaService.returnBook(bookFound);
-            System.out.println(bibliotecaService.getSUCCESSFUL_RETURN());
+            System.out.println(bibliotecaService.getSUCCESSFUL_RETURN_BOOK());
         }else {
-            System.out.println(bibliotecaService.getUN_SUCCESSFUL_RETURN());
+            System.out.println(bibliotecaService.getUN_SUCCESSFUL_RETURN_BOOK());
+        }
+    }
+
+    public void interactionToCheckoutMovie(){
+        long movieNumber = this.choose();
+        Movie movieFound = bibliotecaService.findMovieWithIdentifier(movieNumber);
+
+        if (movieFound != null && !movieFound.isCheckout()) {
+            bibliotecaService.checkoutMovie(movieFound);
+            System.out.println(bibliotecaService.getSUCCESS_CHECKOUT_MOVIE());
+        } else {
+            System.out.println(bibliotecaService.getUN_SUCCESSFUL_CHECKOUT_MOVIE());
         }
     }
 }

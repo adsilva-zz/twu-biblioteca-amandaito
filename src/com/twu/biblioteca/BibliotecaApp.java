@@ -31,12 +31,18 @@ public class BibliotecaApp {
         BibliotecaService bibliotecaService = new BibliotecaService(bookService, movieService);
         MenuService menuService = new MenuService(bibliotecaService);
 
-        Book bookTDD = new Book("Nora Roberts", "Testes Unitários", LocalDate.of(2019, 12, 27), false);
-        Book bookDev = new Book("Jorge Amado", "Desenvolvimento Web", LocalDate.of(2018, 2, 17), false);
+        Book bookTDD = new Book("Nora Roberts", "Testes Unitários",
+                LocalDate.of(2019, 12, 27), false);
+
+        Book bookDev = new Book("Jorge Amado", "Desenvolvimento Web",
+                LocalDate.of(2018, 2, 17), false);
+
         listOfBooks.add(bookDev);
         listOfBooks.add(bookTDD);
 
-        Movie movie = new Movie("Guerra Mundial Z", LocalDate.of(2012,1,12), "Tom Testes", Rating.DEZ);
+        Movie movie = new Movie("Guerra Mundial Z",
+                LocalDate.of(2012,1,12), "Tom Testes", Rating.DEZ, false);
+
         listOfMovies.add(movie);
 
         System.out.println(menuService.callWelcomeMessage());
@@ -45,7 +51,7 @@ public class BibliotecaApp {
 
         int option = 0;
 
-        while (option != 5) {
+        while (option != 6) {
             option = menuService.chooseMenuOption();
 
             if (option == 1) {
@@ -57,7 +63,9 @@ public class BibliotecaApp {
                 menuService.interactionToCheckoutBook();
             } else if (option == 4) {
                 menuService.interactionToReturnBook();
-            } else if (option != 5){
+            } else if (option == 5) {
+                menuService.interactionToCheckoutMovie();
+            } else if (option != 6){
                 System.out.println("Please select valid option");
             }
         }

@@ -32,7 +32,8 @@ public class MenuServiceTest {
 
     @Test
     public void showMenuOptions() {
-        String menuOptions = "Menu\n1 - List of books\n2 - List of movies\n3 - Checkout book \n4 - Return book \n5 - Quit";
+        String menuOptions = "Menu\n1 - List of books\n2 - List of movies\n3 - Checkout book \n4 - Return book " +
+                "\n5 - Checkout Movie \n6 - Quit";
         assertEquals(menuOptions, menuService.listMenuOptions());
     }
 }
