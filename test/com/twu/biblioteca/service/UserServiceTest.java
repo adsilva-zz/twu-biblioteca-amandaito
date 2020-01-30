@@ -1,6 +1,7 @@
 package com.twu.biblioteca.service;
 
 import com.twu.biblioteca.model.User;
+import com.twu.biblioteca.model.UserType;
 import com.twu.biblioteca.repository.UserRepository;
 import com.twu.biblioteca.repository.UserRepositoryImpl;
 import org.junit.Test;
@@ -22,5 +23,11 @@ public class UserServiceTest {
         assertNotNull(userService.getListOfUsers());
     }
 
+    @Test
+    public void loginWithSuccess(){
+        User user = new User("teste", "luiza", "lgmaraes2@gmail.com", "1234543422", UserType.CUSTOMER);
+        listOfUser.add(user);
 
+        assertTrue(userService.login("teste", user.getLibraryNumber()));
+    }
 }

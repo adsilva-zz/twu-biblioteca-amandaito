@@ -13,13 +13,14 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public User showInformationUser(long identifier) {
-        return null;
+    public List<User> getListOfUsers() {
+        return this.listOfUsers;
     }
 
     @Override
-    public List<User> getListOfUsers() {
-        return this.listOfUsers;
+    public User findUser(long libraryNumber) {
+        return getListOfUsers().stream()
+                .filter(user -> user.getLibraryNumber().equals(libraryNumber)).findFirst().orElse(null);
     }
 
 

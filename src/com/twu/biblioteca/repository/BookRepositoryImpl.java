@@ -18,4 +18,10 @@ public class BookRepositoryImpl implements BookRepository{
     public List<Book> getListOfBooks() {
         return this.listOfBook;
     }
+
+    @Override
+    public Book findBook(long identifier){
+        return getListOfBooks().stream()
+                .filter(book -> book.getIdentifier().equals(identifier)).findFirst().orElse(null);
+    }
 }

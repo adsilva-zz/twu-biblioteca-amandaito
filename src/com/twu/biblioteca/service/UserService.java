@@ -16,4 +16,9 @@ public class UserService {
     public List<User> getListOfUsers(){
         return this.userRepository.getListOfUsers();
     }
+
+    public boolean login(String password, long identifier){
+
+        return false;
+    }
 }

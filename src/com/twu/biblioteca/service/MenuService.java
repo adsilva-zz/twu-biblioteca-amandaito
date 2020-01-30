@@ -52,25 +52,25 @@ public class MenuService {
 
     public void interactionToCheckoutBook(){
         long bookNumber = this.choose();
-        Book bookFound = bibliotecaService.findBookWithIdentifier(bookNumber);
+        Book bookFound = bibliotecaService.findBook(bookNumber);
 
         if (bookFound != null && !bookFound.isCheckout()) {
             bibliotecaService.checkoutBook(bookFound);
-            System.out.println(bibliotecaService.getSUCCESS_CHECKOUT_BOOK());
+            System.out.println(bibliotecaService.SUCCESS_CHECKOUT_BOOK);
         } else {
-            System.out.println(bibliotecaService.getUN_SUCCESSFUL_CHECKOUT_BOOK());
+            System.out.println(bibliotecaService.UN_SUCCESSFUL_CHECKOUT_BOOK);
         }
     }
 
     public void interactionToReturnBook(){
         long bookNumber = this.choose();
-        Book bookFound = bibliotecaService.findBookWithIdentifier(bookNumber);
+        Book bookFound = bibliotecaService.findBook(bookNumber);
 
         if (bookFound != null && bookFound.isCheckout()) {
             bibliotecaService.returnBook(bookFound);
-            System.out.println(bibliotecaService.getSUCCESSFUL_RETURN_BOOK());
+            System.out.println(bibliotecaService.SUCCESSFUL_RETURN_BOOK);
         }else {
-            System.out.println(bibliotecaService.getUN_SUCCESSFUL_RETURN_BOOK());
+            System.out.println(bibliotecaService.UN_SUCCESSFUL_RETURN_BOOK);
         }
     }
 
@@ -80,9 +80,9 @@ public class MenuService {
 
         if (movieFound != null && !movieFound.isCheckout()) {
             bibliotecaService.checkoutMovie(movieFound);
-            System.out.println(bibliotecaService.getSUCCESS_CHECKOUT_MOVIE());
+            System.out.println(bibliotecaService.SUCCESS_CHECKOUT_MOVIE);
         } else {
-            System.out.println(bibliotecaService.getUN_SUCCESSFUL_CHECKOUT_MOVIE());
+            System.out.println(bibliotecaService.UN_SUCCESSFUL_CHECKOUT_MOVIE);
         }
     }
 }

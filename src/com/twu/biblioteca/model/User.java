@@ -1,7 +1,5 @@
 package com.twu.biblioteca.model;
 
-import java.time.format.DateTimeFormatter;
-
 public class User {
 
     private Long libraryNumber;
@@ -59,6 +57,10 @@ public class User {
 
     public void setUserType(UserType userType) {
         this.userType = userType;
+    }
+
+    public Long getLibraryNumber() {
+        return libraryNumber;
     }
 
     @Override

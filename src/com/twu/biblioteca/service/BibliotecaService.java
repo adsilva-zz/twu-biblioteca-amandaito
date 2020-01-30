@@ -8,15 +8,13 @@ import java.util.stream.Collectors;
 
 public class BibliotecaService {
 
-    private final String SUCCESS_CHECKOUT_BOOK = "Thank you! Enjoy the book";
-    private final String UN_SUCCESSFUL_CHECKOUT_BOOK = "Sorry, that book is not available";
-    private final String SUCCESSFUL_RETURN_BOOK = "Thank you for returning the book";
-    private final String UN_SUCCESSFUL_RETURN_BOOK = "That is not a valid book to return";
+    public final String SUCCESS_CHECKOUT_BOOK = "Thank you! Enjoy the book";
+    public final String UN_SUCCESSFUL_CHECKOUT_BOOK = "Sorry, that book is not available";
+    public final String SUCCESSFUL_RETURN_BOOK = "Thank you for returning the book";
+    public final String UN_SUCCESSFUL_RETURN_BOOK = "That is not a valid book to return";
 
-    private final String SUCCESS_CHECKOUT_MOVIE = "Thank you! Enjoy the movie";
-    private final String UN_SUCCESSFUL_CHECKOUT_MOVIE = "Sorry, that movie is not available";
-    private final String SUCCESSFUL_RETURN_MOVIE = "Thank you for returning the movie";
-    private final String UN_SUCCESSFUL_RETURN_MOVIE = "That is not a valid movie to return";
+    public final String SUCCESS_CHECKOUT_MOVIE = "Thank you! Enjoy the movie";
+    public final String UN_SUCCESSFUL_CHECKOUT_MOVIE = "Sorry, that movie is not available";
 
     private BookService bookService;
     private MovieService movieService;
@@ -48,7 +46,7 @@ public class BibliotecaService {
         this.bookService.returnBook(book);
     }
 
-    public Book findBookWithIdentifier(Long numberOfBook) {
+    public Book findBook(Long numberOfBook) {
         return this.bookService.findBookWithIdentifier(numberOfBook);
     }
 
@@ -62,35 +60,4 @@ public class BibliotecaService {
 
     public List<Movie> getListOfMovies(){return this.movieService.getListOfMovies();}
 
-    public String getSUCCESS_CHECKOUT_BOOK() {
-        return this.SUCCESS_CHECKOUT_BOOK;
-    }
-
-    public String getUN_SUCCESSFUL_CHECKOUT_BOOK() {
-        return this.UN_SUCCESSFUL_CHECKOUT_BOOK;
-    }
-
-    public String getSUCCESSFUL_RETURN_BOOK() {
-        return this.SUCCESSFUL_RETURN_BOOK;
-    }
-
-    public String getUN_SUCCESSFUL_RETURN_BOOK(){
-        return this.UN_SUCCESSFUL_RETURN_BOOK;
-    }
-
-    public String getSUCCESS_CHECKOUT_MOVIE() {
-        return SUCCESS_CHECKOUT_MOVIE;
-    }
-
-    public String getUN_SUCCESSFUL_CHECKOUT_MOVIE() {
-        return UN_SUCCESSFUL_CHECKOUT_MOVIE;
-    }
-
-    public String getSUCCESSFUL_RETURN_MOVIE() {
-        return SUCCESSFUL_RETURN_MOVIE;
-    }
-
-    public String getUN_SUCCESSFUL_RETURN_MOVIE() {
-        return UN_SUCCESSFUL_RETURN_MOVIE;
-    }
 }

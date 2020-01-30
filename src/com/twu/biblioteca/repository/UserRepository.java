@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface UserRepository {
 
-    public User showInformationUser(long identifier);
-
     public List<User> getListOfUsers();
+
+    public User findUser(long libraryNumber);
 }

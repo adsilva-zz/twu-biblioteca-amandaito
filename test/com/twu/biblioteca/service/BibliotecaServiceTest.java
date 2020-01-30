@@ -29,8 +29,6 @@ public class BibliotecaServiceTest {
 
     private BibliotecaService bibliotecaService = new BibliotecaService(bookService, movieService);
 
-    private MenuService menuService = new MenuService(bibliotecaService);
-
     @After
     public void finalize() {
         listOfBooks.clear();
@@ -58,41 +56,5 @@ public class BibliotecaServiceTest {
 
         assertEquals(listOfBooks.size(), 1);
         assertEquals(dataBook, bibliotecaService.listBooksWithColumns(listOfBooks).get(0));
-    }
-
-    @Test
-    public void showMessageCheckoutBookWithSuccess(){
-        String successMessage = "Thank you! Enjoy the book";
-        assertEquals(successMessage, bibliotecaService.getSUCCESS_CHECKOUT_BOOK());
-    }
-
-    @Test
-    public void showMessageCheckoutMovieWithSuccess(){
-        String successMessage = "Thank you! Enjoy the movie";
-        assertEquals(successMessage, bibliotecaService.getSUCCESS_CHECKOUT_MOVIE());
-    }
-
-    @Test
-    public void showMessageCheckoutBookWithUn_Successful(){
-        String successMessage = "Sorry, that book is not available";
-        assertEquals(successMessage, bibliotecaService.getUN_SUCCESSFUL_CHECKOUT_BOOK());
-    }
-
-    @Test
-    public void showMessageCheckoutMovieWithUn_Successful(){
-        String successMessage = "Sorry, that movie is not available";
-        assertEquals(successMessage, bibliotecaService.getUN_SUCCESSFUL_CHECKOUT_MOVIE());
-    }
-
-    @Test
-    public void showMessageReturnBookWithSuccess(){
-        String successMessage = "Thank you for returning the book";
-        assertEquals(successMessage, bibliotecaService.getSUCCESSFUL_RETURN_BOOK());
-    }
-
-    @Test
-    public void showMessageReturnBookWithUn_Success(){
-        String successMessage = "That is not a valid book to return";
-        assertEquals(successMessage, bibliotecaService.getUN_SUCCESSFUL_RETURN_BOOK());
     }
 }
