@@ -4,6 +4,7 @@ import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.repository.BookRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BookService {
 
@@ -27,5 +28,10 @@ public class BookService {
 
     public void returnBook(Book book){
         book.setCheckout(false);
+    }
+
+    public List<String> listBooksWithColumns() {
+        return getListOfBooks().stream().filter(book -> !book.isCheckout())
+                .map(Book::toString).collect(Collectors.toList());
     }
 }

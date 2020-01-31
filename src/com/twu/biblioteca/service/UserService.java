@@ -17,8 +17,12 @@ public class UserService {
         return this.userRepository.getListOfUsers();
     }
 
-    public boolean login(String password, long identifier){
+    public boolean login(String password, String identifier){
 
         return false;
+    }
+
+    public User findUser(String libraryNumber) {
+        return userRepository.findUser(libraryNumber);
     }
 }

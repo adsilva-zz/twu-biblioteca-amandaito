@@ -2,7 +2,7 @@ package com.twu.biblioteca.model;
 
 public class User {
 
-    private Long libraryNumber;
+    private String libraryNumber;
     private static long SEQUENCE;
     private String password;
     private String name;
@@ -16,7 +16,7 @@ public class User {
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.userType = userType;
-        this.libraryNumber = ++SEQUENCE;
+        this.libraryNumber = this.generateLibrarianNumber(++SEQUENCE);
     }
 
     public String getPassword() {
@@ -59,7 +59,7 @@ public class User {
         this.userType = userType;
     }
 
-    public Long getLibraryNumber() {
+    public String getLibraryNumber() {
         return libraryNumber;
     }
 
@@ -68,4 +68,12 @@ public class User {
         return name + " | " + email +" | " + phoneNumber;
     }
 
+    private String generateLibrarianNumber(long sequence){
+        String sequencePattern = String.format("%07d", sequence);
+
+        StringBuilder numberLibrary = new StringBuilder(sequencePattern)
+                .insert(3,"-");
+
+        return numberLibrary.toString();
+    }
 }

@@ -8,5 +8,5 @@ public interface UserRepository {
 
     public List<User> getListOfUsers();
 
-    public User findUser(long libraryNumber);
+    public User findUser(String libraryNumber);
 }

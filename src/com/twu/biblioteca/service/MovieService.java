@@ -4,6 +4,7 @@ import com.twu.biblioteca.model.Movie;
 import com.twu.biblioteca.repository.MovieRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MovieService {
 
@@ -28,5 +29,10 @@ public class MovieService {
     public Movie findBookWithIdentifier(Long identifier){
         return getListOfMovies().stream().filter(movie -> movie.getIdentifier().equals(identifier))
                 .findFirst().orElse(null);
+    }
+
+    public List<String> listOfMoviesWithColumns() {
+        return getListOfMovies().stream().filter(movie -> !movie.isCheckout())
+                .map(Movie::toString).collect(Collectors.toList());
     }
 }

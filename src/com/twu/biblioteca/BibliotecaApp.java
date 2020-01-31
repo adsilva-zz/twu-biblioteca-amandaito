@@ -1,8 +1,6 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.model.Book;
-import com.twu.biblioteca.model.Movie;
-import com.twu.biblioteca.model.Rating;
+import com.twu.biblioteca.model.*;
 import com.twu.biblioteca.repository.BookRepository;
 import com.twu.biblioteca.repository.BookRepositoryImpl;
 import com.twu.biblioteca.repository.MovieRepository;
@@ -49,16 +47,17 @@ public class BibliotecaApp {
 
         System.out.println(menuService.listMenuOptions());
 
+        User user = new User("teste", "luiza", "lgmaraes2@gmail.com", "1234543422", UserType.CUSTOMER);
+
         int option = 0;
 
         while (option != 6) {
             option = menuService.chooseMenuOption();
 
             if (option == 1) {
-                bibliotecaService.listBooksWithColumns(listOfBooks)
-                        .forEach(System.out::println);
+                bibliotecaService.listBooksWithColumns().forEach(System.out::println);
             } else if (option == 2){
-                bibliotecaService.listOfMovies(listOfMovies).forEach(System.out::println);
+                bibliotecaService.listOfMoviesWithColumns().forEach(System.out::println);
             } else if (option == 3) {
                 menuService.interactionToCheckoutBook();
             } else if (option == 4) {

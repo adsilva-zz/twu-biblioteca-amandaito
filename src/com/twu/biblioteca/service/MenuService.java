@@ -76,7 +76,7 @@ public class MenuService {
 
     public void interactionToCheckoutMovie(){
         long movieNumber = this.choose();
-        Movie movieFound = bibliotecaService.findMovieWithIdentifier(movieNumber);
+        Movie movieFound = bibliotecaService.findMovie(movieNumber);
 
         if (movieFound != null && !movieFound.isCheckout()) {
             bibliotecaService.checkoutMovie(movieFound);

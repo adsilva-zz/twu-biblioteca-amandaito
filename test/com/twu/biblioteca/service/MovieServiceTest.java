@@ -1,6 +1,5 @@
 package com.twu.biblioteca.service;
 
-import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.model.Movie;
 import com.twu.biblioteca.model.Rating;
 import com.twu.biblioteca.repository.MovieRepository;
@@ -44,7 +43,6 @@ public class MovieServiceTest {
                 LocalDate.of(2020,1,12), "Tom Testes", Rating.DEZ, false);
 
         movieService.checkoutMovie(movie);
-
         assertEquals(true, movie.isCheckout());
     }
 

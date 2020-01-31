@@ -24,40 +24,31 @@ public class BibliotecaService {
         this.movieService = movieService;
     }
 
-    public List<String> listBooksWithColumns(List<Book> listOfBooks) {
-        return listOfBooks.stream().filter(book -> !book.isCheckout())
-                .map(Book::toString).collect(Collectors.toList());
+    public List<String> listBooksWithColumns() {
+        return bookService.listBooksWithColumns();
     }
 
-    public List<String> listOfMovies(List<Movie> listOfMovies) {
-        return listOfMovies.stream().filter(movie -> !movie.isCheckout())
-                .map(Movie::toString).collect(Collectors.toList());
+    public List<String> listOfMoviesWithColumns() {
+        return movieService.listOfMoviesWithColumns();
     }
 
     public void checkoutBook(Book book) {
-        this.bookService.checkoutBook(book);
+        bookService.checkoutBook(book);
     }
 
-    public void checkoutMovie(Movie movie) {
-        this.movieService.checkoutMovie(movie);
+    public void checkoutMovie(Movie movie) { movieService.checkoutMovie(movie);
     }
 
     public void returnBook(Book book) {
-        this.bookService.returnBook(book);
+        bookService.returnBook(book);
     }
 
     public Book findBook(Long numberOfBook) {
-        return this.bookService.findBookWithIdentifier(numberOfBook);
+        return bookService.findBookWithIdentifier(numberOfBook);
     }
 
-    public Movie findMovieWithIdentifier(Long movieNumber) {
-        return this.movieService.findBookWithIdentifier(movieNumber);
+    public Movie findMovie(Long movieNumber) {
+        return movieService.findBookWithIdentifier(movieNumber);
     }
-
-    public List<Book> getListOfBooks() {
-        return this.bookService.getListOfBooks();
-    }
-
-    public List<Movie> getListOfMovies(){return this.movieService.getListOfMovies();}
 
 }
