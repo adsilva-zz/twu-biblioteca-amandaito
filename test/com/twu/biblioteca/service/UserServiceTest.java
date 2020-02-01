@@ -32,8 +32,22 @@ public class UserServiceTest {
     public void loginWithSuccess(){
         User user = new User("teste", "luiza", "lgmaraes2@gmail.com", "1234543422", UserType.CUSTOMER);
         listOfUser.add(user);
+        User userLogin = userService.login(user.getPassword(), user.getLibraryNumber());
+        assertEquals(userLogin, user);
+    }
 
-        assertTrue(userService.login(user.getPassword(), user.getLibraryNumber()));
+    @Test
+    public void loginWithIncorrectPassword(){
+        User user = new User("teste", "luiza", "lgmaraes2@gmail.com", "1234543422", UserType.CUSTOMER);
+        listOfUser.add(user);
+        assertNull(userService.login("  ", user.getLibraryNumber() ));
+    }
+
+    @Test
+    public void loginWithIncorrectLibraryNumber(){
+        User user = new User("teste", "luiza", "lgmaraes2@gmail.com", "1234543422", UserType.CUSTOMER);
+        listOfUser.add(user);
+        assertNull(userService.login(user.getPassword(), " tttt "));
     }
 
     @Test
@@ -41,7 +55,7 @@ public class UserServiceTest {
         User user = new User("teste", "luiza", "lgmaraes2@gmail.com", "1234543422", UserType.CUSTOMER);
         listOfUser.add(user);
 
-        User userFound = userService.findUser("000-0001");
+        User userFound = userService.findUser(user.getLibraryNumber());
         assertEquals(user.getLibraryNumber(), userFound.getLibraryNumber());
     }
 }

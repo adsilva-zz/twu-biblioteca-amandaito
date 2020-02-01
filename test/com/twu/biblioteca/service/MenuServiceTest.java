@@ -2,10 +2,8 @@ package com.twu.biblioteca.service;
 
 import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.model.Movie;
-import com.twu.biblioteca.repository.BookRepository;
-import com.twu.biblioteca.repository.BookRepositoryImpl;
-import com.twu.biblioteca.repository.MovieRepository;
-import com.twu.biblioteca.repository.MovieRepositoryImpl;
+import com.twu.biblioteca.model.User;
+import com.twu.biblioteca.repository.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -22,7 +20,11 @@ public class MenuServiceTest {
     private MovieRepository movieRepository = new MovieRepositoryImpl(listOfMovies);
     private MovieService movieService = new MovieService(movieRepository);
     private BibliotecaService bibliotecaService = new BibliotecaService(bookService, movieService);
-    private MenuService menuService = new MenuService(bibliotecaService);
+
+    private List<User> listOfUsers = new ArrayList<>();
+    private UserRepository userRepository = new UserRepositoryImpl(listOfUsers);
+    private UserService userService = new UserService(userRepository);
+    private MenuService menuService = new MenuService(bibliotecaService, userService);
 
     @Test
     public void welcomeSuccessTest() {

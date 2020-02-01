@@ -1,6 +1,7 @@
 package com.twu.biblioteca.service;
 
 import com.twu.biblioteca.model.Book;
+import com.twu.biblioteca.model.User;
 import com.twu.biblioteca.repository.BookRepository;
 
 import java.util.List;
@@ -18,7 +19,8 @@ public class BookService {
         return bookRepository.getListOfBooks();
     }
 
-    public void checkoutBook(Book book){
+    public void checkoutBook(Book book, User user){
+        book.setUser(user);
         book.setCheckout(true);
     }
 

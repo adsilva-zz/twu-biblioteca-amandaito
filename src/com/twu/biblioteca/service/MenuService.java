@@ -2,6 +2,7 @@ package com.twu.biblioteca.service;
 
 import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.model.Movie;
+import com.twu.biblioteca.model.User;
 
 import java.util.Scanner;
 
@@ -16,10 +17,27 @@ public class MenuService {
 
     private final String CHOOSE_BOOK = "Entry with number: ";
 
+    private final String ENTRY_LIBRARY_NUMBER = "Entry with your library number: ";
+
+    private final String ENTRY_LIBRARY_PASSWORD = "Entry with your password: ";
+
     private BibliotecaService bibliotecaService;
 
-    public MenuService(BibliotecaService bibliotecaService) {
+    private User user;
+
+    private UserService userService;
+
+    public MenuService(BibliotecaService bibliotecaService, UserService userService) {
         this.bibliotecaService = bibliotecaService;
+        this.userService = userService;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String callWelcomeMessage() {
@@ -55,7 +73,7 @@ public class MenuService {
         Book bookFound = bibliotecaService.findBook(bookNumber);
 
         if (bookFound != null && !bookFound.isCheckout()) {
-            bibliotecaService.checkoutBook(bookFound);
+            bibliotecaService.checkoutBook(bookFound, user);
             System.out.println(bibliotecaService.SUCCESS_CHECKOUT_BOOK);
         } else {
             System.out.println(bibliotecaService.UN_SUCCESSFUL_CHECKOUT_BOOK);
@@ -84,5 +102,20 @@ public class MenuService {
         } else {
             System.out.println(bibliotecaService.UN_SUCCESSFUL_CHECKOUT_MOVIE);
         }
+    }
+
+    public void interactionToLogin(){
+        Scanner read = new Scanner(System.in);
+
+        String libraryNumber;
+        String password;
+
+        System.out.println(ENTRY_LIBRARY_NUMBER);
+        libraryNumber=read.nextLine();
+
+        System.out.println(ENTRY_LIBRARY_PASSWORD);
+        password = read.nextLine();
+
+        this.user = userService.login(password, libraryNumber);
     }
 }

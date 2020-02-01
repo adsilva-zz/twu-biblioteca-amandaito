@@ -1,6 +1,8 @@
 package com.twu.biblioteca.service;
 
 import com.twu.biblioteca.model.Book;
+import com.twu.biblioteca.model.User;
+import com.twu.biblioteca.model.UserType;
 import com.twu.biblioteca.repository.BookRepositoryImpl;
 import org.junit.After;
 import org.junit.Test;
@@ -31,8 +33,24 @@ public class BookServiceTest {
     public void checkoutBookWithSuccess(){
         Book book = new Book("Bruce Lee", "Run two",
                 LocalDate.of(2019, 02, 12), false);
-        bookService.checkoutBook(book);
+
+        User user = new User("teste", "luiza", "lgmaraes2@gmail.com",
+                "1234543422", UserType.CUSTOMER);
+
+        bookService.checkoutBook(book, user);
         assertEquals(true, book.isCheckout());
+    }
+
+    @Test
+    public void bookHasUserAfterCheckout(){
+        Book book = new Book("Bruce Lee", "Run two",
+                LocalDate.of(2019, 02, 12), false);
+
+        User user = new User("teste", "luiza", "lgmaraes2@gmail.com",
+                "1234543422", UserType.CUSTOMER);
+
+        bookService.checkoutBook(book, user);
+        assertEquals(user, book.getUser());
     }
 
     @Test

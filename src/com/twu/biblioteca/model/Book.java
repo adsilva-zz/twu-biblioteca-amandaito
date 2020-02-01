@@ -1,5 +1,6 @@
 package com.twu.biblioteca.model;
 
+import javax.jws.soap.SOAPBinding;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -9,6 +10,7 @@ public class Book {
     private String title;
     private LocalDate yearPublished;
     private boolean checkout;
+    private User user;
     private static long SEQUENCE;
 
     public Book(String author, String title, LocalDate yearPublished, boolean checkout) {
@@ -53,6 +55,14 @@ public class Book {
 
     public Long getIdentifier() {
         return identifier;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

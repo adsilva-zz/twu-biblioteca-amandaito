@@ -1,15 +1,10 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.model.*;
-import com.twu.biblioteca.repository.BookRepository;
-import com.twu.biblioteca.repository.BookRepositoryImpl;
-import com.twu.biblioteca.repository.MovieRepository;
-import com.twu.biblioteca.repository.MovieRepositoryImpl;
-import com.twu.biblioteca.service.BookService;
-import com.twu.biblioteca.service.BibliotecaService;
-import com.twu.biblioteca.service.MenuService;
-import com.twu.biblioteca.service.MovieService;
+import com.twu.biblioteca.repository.*;
+import com.twu.biblioteca.service.*;
 
+import javax.jws.soap.SOAPBinding;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +21,15 @@ public class BibliotecaApp {
         MovieRepository movieRepository = new MovieRepositoryImpl(listOfMovies);
         MovieService movieService = new MovieService(movieRepository);
 
+        User user = new User("teste", "luiza", "lgmaraes2@gmail.com", "1234543422", UserType.CUSTOMER);
+
+        List<User> listOfUsers = new ArrayList<>();
+        listOfUsers.add(user);
+        UserRepository userRepository = new UserRepositoryImpl(listOfUsers);
+        UserService userService = new UserService(userRepository);
+
         BibliotecaService bibliotecaService = new BibliotecaService(bookService, movieService);
-        MenuService menuService = new MenuService(bibliotecaService);
+        MenuService menuService = new MenuService(bibliotecaService, userService);
 
         Book bookTDD = new Book("Nora Roberts", "Testes Unitários",
                 LocalDate.of(2019, 12, 27), false);
@@ -39,15 +41,13 @@ public class BibliotecaApp {
         listOfBooks.add(bookTDD);
 
         Movie movie = new Movie("Guerra Mundial Z",
-                LocalDate.of(2012,1,12), "Tom Testes", Rating.DEZ, false);
+                LocalDate.of(2012, 1, 12), "Tom Testes", Rating.DEZ, false);
 
         listOfMovies.add(movie);
 
         System.out.println(menuService.callWelcomeMessage());
 
         System.out.println(menuService.listMenuOptions());
-
-        User user = new User("teste", "luiza", "lgmaraes2@gmail.com", "1234543422", UserType.CUSTOMER);
 
         int option = 0;
 
@@ -56,15 +56,25 @@ public class BibliotecaApp {
 
             if (option == 1) {
                 bibliotecaService.listBooksWithColumns().forEach(System.out::println);
-            } else if (option == 2){
+            } else if (option == 2) {
                 bibliotecaService.listOfMoviesWithColumns().forEach(System.out::println);
             } else if (option == 3) {
-                menuService.interactionToCheckoutBook();
+                menuService.interactionToLogin();
+                if (menuService.getUser() == null) {
+                    System.out.println("Library number or password wrong");
+                }else {
+                    menuService.interactionToCheckoutBook();
+                }
             } else if (option == 4) {
-                menuService.interactionToReturnBook();
+                menuService.interactionToLogin();
+                if (menuService.getUser() == null) {
+                    System.out.println("Library number or password wrong");
+                }else {
+                    menuService.interactionToReturnBook();
+                }
             } else if (option == 5) {
                 menuService.interactionToCheckoutMovie();
-            } else if (option != 6){
+            } else if (option != 6) {
                 System.out.println("Please select valid option");
             }
         }

@@ -2,9 +2,10 @@ package com.twu.biblioteca.service;
 
 import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.model.Movie;
+import com.twu.biblioteca.model.User;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class BibliotecaService {
 
@@ -15,6 +16,8 @@ public class BibliotecaService {
 
     public final String SUCCESS_CHECKOUT_MOVIE = "Thank you! Enjoy the movie";
     public final String UN_SUCCESSFUL_CHECKOUT_MOVIE = "Sorry, that movie is not available";
+
+    private UserService userService;
 
     private BookService bookService;
     private MovieService movieService;
@@ -32,8 +35,8 @@ public class BibliotecaService {
         return movieService.listOfMoviesWithColumns();
     }
 
-    public void checkoutBook(Book book) {
-        bookService.checkoutBook(book);
+    public void checkoutBook(Book book, User user) {
+        bookService.checkoutBook(book, user);
     }
 
     public void checkoutMovie(Movie movie) { movieService.checkoutMovie(movie);
