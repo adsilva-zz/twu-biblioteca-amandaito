@@ -28,7 +28,7 @@ public class BibliotecaApp {
         UserRepository userRepository = new UserRepositoryImpl(listOfUsers);
         UserService userService = new UserService(userRepository);
 
-        BibliotecaService bibliotecaService = new BibliotecaService(bookService, movieService);
+        BibliotecaService bibliotecaService = new BibliotecaService(bookService, movieService, userService);
         MenuService menuService = new MenuService(bibliotecaService, userService);
 
         Book bookTDD = new Book("Nora Roberts", "Testes Unitários",
@@ -51,7 +51,7 @@ public class BibliotecaApp {
 
         int option = 0;
 
-        while (option != 6) {
+        while (option != 7) {
             option = menuService.chooseMenuOption();
 
             if (option == 1) {
@@ -74,7 +74,13 @@ public class BibliotecaApp {
                 }
             } else if (option == 5) {
                 menuService.interactionToCheckoutMovie();
-            } else if (option != 6) {
+            }else if (option == 6) {
+                if (menuService.getUser() == null) {
+                    System.out.println("Option available to users logged");
+                }else {
+                    System.out.println(bibliotecaService.showUserInformation(menuService.getUser().getLibraryNumber()));;
+                }
+            } else if (option != 7) {
                 System.out.println("Please select valid option");
             }
         }

@@ -3,9 +3,8 @@ package com.twu.biblioteca.service;
 import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.model.Movie;
 import com.twu.biblioteca.model.Rating;
-import com.twu.biblioteca.repository.BookRepositoryImpl;
-import com.twu.biblioteca.repository.MovieRepository;
-import com.twu.biblioteca.repository.MovieRepositoryImpl;
+import com.twu.biblioteca.model.User;
+import com.twu.biblioteca.repository.*;
 import org.junit.After;
 import org.junit.Test;
 
@@ -28,7 +27,11 @@ public class BibliotecaServiceTest {
 
     private MovieService movieService = new MovieService(movieRepository);
 
-    private BibliotecaService bibliotecaService = new BibliotecaService(bookService, movieService);
+    private List<User> listOfUsers = new ArrayList<>();
+    private UserRepository userRepository = new UserRepositoryImpl(listOfUsers);
+    private UserService userService = new UserService(userRepository);
+
+    private BibliotecaService bibliotecaService = new BibliotecaService(bookService, movieService, userService);
 
     @After
     public void finalize() {

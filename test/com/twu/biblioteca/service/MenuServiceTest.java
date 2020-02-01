@@ -19,11 +19,11 @@ public class MenuServiceTest {
     private List<Movie> listOfMovies = new ArrayList<>();
     private MovieRepository movieRepository = new MovieRepositoryImpl(listOfMovies);
     private MovieService movieService = new MovieService(movieRepository);
-    private BibliotecaService bibliotecaService = new BibliotecaService(bookService, movieService);
 
     private List<User> listOfUsers = new ArrayList<>();
     private UserRepository userRepository = new UserRepositoryImpl(listOfUsers);
     private UserService userService = new UserService(userRepository);
+    private BibliotecaService bibliotecaService = new BibliotecaService(bookService, movieService, userService);
     private MenuService menuService = new MenuService(bibliotecaService, userService);
 
     @Test

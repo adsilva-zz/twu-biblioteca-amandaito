@@ -3,8 +3,11 @@ package com.twu.biblioteca.service;
 import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.model.Movie;
 import com.twu.biblioteca.model.User;
+import com.twu.biblioteca.repository.UserRepository;
+import com.twu.biblioteca.repository.UserRepositoryImpl;
 
 import javax.jws.soap.SOAPBinding;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BibliotecaService {
@@ -22,9 +25,10 @@ public class BibliotecaService {
     private BookService bookService;
     private MovieService movieService;
 
-    public BibliotecaService(BookService bookService, MovieService movieService) {
+    public BibliotecaService(BookService bookService, MovieService movieService, UserService userService) {
         this.bookService = bookService;
         this.movieService = movieService;
+        this.userService = userService;
     }
 
     public List<String> listBooksWithColumns() {
@@ -33,6 +37,10 @@ public class BibliotecaService {
 
     public List<String> listOfMoviesWithColumns() {
         return movieService.listOfMoviesWithColumns();
+    }
+
+    public User showUserInformation(String libraryNumber){
+        return userService.findUser(libraryNumber);
     }
 
     public void checkoutBook(Book book, User user) {
