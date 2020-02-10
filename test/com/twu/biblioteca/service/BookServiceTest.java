@@ -4,11 +4,9 @@ import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.model.User;
 import com.twu.biblioteca.model.UserType;
 import com.twu.biblioteca.repository.BookRepositoryImpl;
-import org.junit.After;
 import org.junit.Test;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -24,7 +22,7 @@ public class BookServiceTest {
     }
 
     @Test
-    public void checkoutBookWithSuccess(){
+    public void checkoutBookWithSuccess() {
         Book book = new Book("Bruce Lee", "Run two",
                 LocalDate.of(2019, 02, 12), false);
 
@@ -36,7 +34,7 @@ public class BookServiceTest {
     }
 
     @Test
-    public void bookHasUserAfterCheckout(){
+    public void bookHasUserAfterCheckout() {
         Book book = new Book("Bruce Lee", "Run two",
                 LocalDate.of(2019, 02, 12), false);
 
@@ -48,7 +46,7 @@ public class BookServiceTest {
     }
 
     @Test
-    public void verifyNumberOfBookWithSuccess(){
+    public void verifyNumberOfBookWithSuccess() {
         Book book = new Book("Bruce Lee", "Run two",
                 LocalDate.of(2019, 02, 12), false);
         bookService.getListOfBooks().add(book);
@@ -56,7 +54,7 @@ public class BookServiceTest {
     }
 
     @Test
-    public void returnBookWithSuccess(){
+    public void returnBookWithSuccess() {
         Book book = new Book("Bruce Lee", "Run two",
                 LocalDate.of(2019, 02, 12), true);
         bookService.returnBook(book);

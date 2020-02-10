@@ -7,4 +7,6 @@ import java.util.List;
 public interface MovieRepository {
 
     public List<Movie> getListOfMovies();
+
+    public Movie findBookWithIdentifier(Long identifier);
 }

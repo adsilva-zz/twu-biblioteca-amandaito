@@ -1,16 +1,17 @@
 package com.twu.biblioteca.repository;
 
 import com.twu.biblioteca.model.User;
+import com.twu.biblioteca.model.UserType;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class UserRepositoryImpl implements UserRepository {
 
-    private List<User> listOfUsers;
-
-    public UserRepositoryImpl(List<User> listOfUsers) {
-        this.listOfUsers = listOfUsers;
-    }
+    private final static List<User> listOfUsers = new ArrayList<>(Arrays.asList(
+            new User("teste", "luiza", "lgmaraes2@gmail.com", "1234543422", UserType.CUSTOMER)
+    ));
 
     @Override
     public List<User> getListOfUsers() {

@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class BookRepositoryImpl implements BookRepository{
+public class BookRepositoryImpl implements BookRepository {
 
-    private static List<Book> listOfBook = new ArrayList<>(Arrays.asList(
+    private final static List<Book> listOfBook = new ArrayList<>(Arrays.asList(
             new Book("Nora Roberts", "Testes Unitários", LocalDate.of(2019, 12, 27), false),
             new Book("Jorge Amado", "Desenvolvimento Web", LocalDate.of(2018, 2, 17), false)
     ));
@@ -20,7 +20,7 @@ public class BookRepositoryImpl implements BookRepository{
     }
 
     @Override
-    public Book findBook(long identifier){
+    public Book findBook(long identifier) {
         return getListOfBooks().stream()
                 .filter(book -> book.getIdentifier().equals(identifier)).findFirst().orElse(null);
     }

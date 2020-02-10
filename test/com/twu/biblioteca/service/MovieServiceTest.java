@@ -6,25 +6,25 @@ import com.twu.biblioteca.repository.MovieRepository;
 import com.twu.biblioteca.repository.MovieRepositoryImpl;
 import org.junit.Test;
 
-
-import static org.junit.Assert.*;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class MovieServiceTest {
 
     List<Movie> listOfMovies = new ArrayList<>();
 
-    private MovieRepository movieRepository = new MovieRepositoryImpl(listOfMovies);
+    private MovieRepository movieRepository = new MovieRepositoryImpl();
 
     private MovieService movieService = new MovieService(movieRepository);
 
     @Test
-    public void getListOfMoviesWithSuccess(){
+    public void getListOfMoviesWithSuccess() {
         Movie movie = new Movie("Guerra Mundial Z",
-                LocalDate.of(2012,1,12), "Tom Testes", Rating.DEZ, false);
+                LocalDate.of(2012, 1, 12), "Tom Testes", Rating.DEZ, false);
 
         listOfMovies.add(movie);
 
@@ -32,24 +32,24 @@ public class MovieServiceTest {
     }
 
     @Test
-    public void getMovieRepositoryWithSuccess(){
+    public void getMovieRepositoryWithSuccess() {
         MovieRepository movieRep = movieService.getMovieRepository();
         assertNotNull(movieRep);
     }
 
     @Test
-    public void checkoutMovieWithSuccess(){
+    public void checkoutMovieWithSuccess() {
         Movie movie = new Movie("Testes sucesso",
-                LocalDate.of(2020,1,12), "Tom Testes", Rating.DEZ, false);
+                LocalDate.of(2020, 1, 12), "Tom Testes", Rating.DEZ, false);
 
         movieService.checkoutMovie(movie);
         assertEquals(true, movie.isCheckout());
     }
 
     @Test
-    public void verifyNumberOfMovieWithSuccess(){
+    public void verifyNumberOfMovieWithSuccess() {
         Movie movie = new Movie("Testes sucesso",
-                LocalDate.of(2020,1,12), "Tom Testes", Rating.DEZ, false);
+                LocalDate.of(2020, 1, 12), "Tom Testes", Rating.DEZ, false);
 
         movieService.getListOfMovies().add(movie);
         assertNotNull(movieService.findBookWithIdentifier(movie.getIdentifier()));

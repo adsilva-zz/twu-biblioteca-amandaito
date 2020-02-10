@@ -16,24 +16,14 @@ public class BibliotecaApp {
         BookRepository bookRepository = new BookRepositoryImpl();
         BookService bookService = new BookService(bookRepository);
 
-        List<Movie> listOfMovies = new ArrayList<>();
-        MovieRepository movieRepository = new MovieRepositoryImpl(listOfMovies);
+        MovieRepository movieRepository = new MovieRepositoryImpl();
         MovieService movieService = new MovieService(movieRepository);
 
-        User user = new User("teste", "luiza", "lgmaraes2@gmail.com", "1234543422", UserType.CUSTOMER);
-
-        List<User> listOfUsers = new ArrayList<>();
-        listOfUsers.add(user);
-        UserRepository userRepository = new UserRepositoryImpl(listOfUsers);
+        UserRepository userRepository = new UserRepositoryImpl();
         UserService userService = new UserService(userRepository);
 
         BibliotecaService bibliotecaService = new BibliotecaService(bookService, movieService, userService);
         MenuService menuService = new MenuService(bibliotecaService, userService);
-
-        Movie movie = new Movie("Guerra Mundial Z",
-                LocalDate.of(2012, 1, 12), "Tom Testes", Rating.DEZ, false);
-
-        listOfMovies.add(movie);
 
         System.out.println(menuService.callWelcomeMessage());
 
