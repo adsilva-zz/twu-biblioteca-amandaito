@@ -14,14 +14,8 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class BookServiceTest {
-    private List<Book> listOfBooks = new ArrayList<Book>();
-    private BookRepositoryImpl bookRepository = new BookRepositoryImpl(listOfBooks);
+    private BookRepositoryImpl bookRepository = new BookRepositoryImpl();
     private BookService bookService = new BookService(bookRepository);
-
-    @After
-    public void finalize() {
-        listOfBooks.clear();
-    }
 
     @Test
     public void listBooksWithSuccess() {

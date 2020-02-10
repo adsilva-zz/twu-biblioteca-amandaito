@@ -1,6 +1,5 @@
 package com.twu.biblioteca.model;
 
-import javax.jws.soap.SOAPBinding;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 

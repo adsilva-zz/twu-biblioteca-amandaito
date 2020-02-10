@@ -3,22 +3,18 @@ package com.twu.biblioteca.service;
 import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.model.Movie;
 import com.twu.biblioteca.model.User;
-import com.twu.biblioteca.repository.UserRepository;
-import com.twu.biblioteca.repository.UserRepositoryImpl;
 
-import javax.jws.soap.SOAPBinding;
-import java.util.ArrayList;
 import java.util.List;
 
 public class BibliotecaService {
 
-    public final String SUCCESS_CHECKOUT_BOOK = "Thank you! Enjoy the book";
-    public final String UN_SUCCESSFUL_CHECKOUT_BOOK = "Sorry, that book is not available";
-    public final String SUCCESSFUL_RETURN_BOOK = "Thank you for returning the book";
-    public final String UN_SUCCESSFUL_RETURN_BOOK = "That is not a valid book to return";
+    public static final String SUCCESS_CHECKOUT_BOOK = "Thank you! Enjoy the book";
+    public static final String UN_SUCCESSFUL_CHECKOUT_BOOK = "Sorry, that book is not available";
+    public static final String SUCCESSFUL_RETURN_BOOK = "Thank you for returning the book";
+    public static final String UN_SUCCESSFUL_RETURN_BOOK = "That is not a valid book to return";
 
-    public final String SUCCESS_CHECKOUT_MOVIE = "Thank you! Enjoy the movie";
-    public final String UN_SUCCESSFUL_CHECKOUT_MOVIE = "Sorry, that movie is not available";
+    public static final String SUCCESS_CHECKOUT_MOVIE = "Thank you! Enjoy the movie";
+    public static final String UN_SUCCESSFUL_CHECKOUT_MOVIE = "Sorry, that movie is not available";
 
     private UserService userService;
 

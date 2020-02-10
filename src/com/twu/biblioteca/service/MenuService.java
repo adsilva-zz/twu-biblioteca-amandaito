@@ -8,18 +8,18 @@ import java.util.Scanner;
 
 public class MenuService {
 
-    private final String WELCOME_MESSAGE = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore";
+    private static final String WELCOME_MESSAGE = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore";
 
-    private final String MENU_OPTIONS = "Menu\n1 - List of books\n2 - List of movies\n3 - Checkout book \n4 - Return book " +
+    private static final String MENU_OPTIONS = "Menu\n1 - List of books\n2 - List of movies\n3 - Checkout book \n4 - Return book " +
             "\n5 - Checkout Movie \n6 - Quit";
 
-    private final String CHOOSE_OPTION = "Please choose an option: ";
+    private static final String CHOOSE_OPTION = "Please choose an option: ";
 
-    private final String CHOOSE_BOOK = "Entry with number: ";
+    private static final String CHOOSE_BOOK = "Entry with number: ";
 
-    private final String ENTRY_LIBRARY_NUMBER = "Entry with your library number: ";
+    private static final String ENTRY_LIBRARY_NUMBER = "Entry with your library number: ";
 
-    private final String ENTRY_LIBRARY_PASSWORD = "Entry with your password: ";
+    private static final String ENTRY_LIBRARY_PASSWORD = "Entry with your password: ";
 
     private BibliotecaService bibliotecaService;
 

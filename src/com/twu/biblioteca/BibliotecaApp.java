@@ -13,8 +13,7 @@ public class BibliotecaApp {
 
     public static void main(String[] args) {
 
-        List<Book> listOfBooks = new ArrayList<>();
-        BookRepository bookRepository = new BookRepositoryImpl(listOfBooks);
+        BookRepository bookRepository = new BookRepositoryImpl();
         BookService bookService = new BookService(bookRepository);
 
         List<Movie> listOfMovies = new ArrayList<>();
@@ -30,15 +29,6 @@ public class BibliotecaApp {
 
         BibliotecaService bibliotecaService = new BibliotecaService(bookService, movieService, userService);
         MenuService menuService = new MenuService(bibliotecaService, userService);
-
-        Book bookTDD = new Book("Nora Roberts", "Testes Unitários",
-                LocalDate.of(2019, 12, 27), false);
-
-        Book bookDev = new Book("Jorge Amado", "Desenvolvimento Web",
-                LocalDate.of(2018, 2, 17), false);
-
-        listOfBooks.add(bookDev);
-        listOfBooks.add(bookTDD);
 
         Movie movie = new Movie("Guerra Mundial Z",
                 LocalDate.of(2012, 1, 12), "Tom Testes", Rating.DEZ, false);

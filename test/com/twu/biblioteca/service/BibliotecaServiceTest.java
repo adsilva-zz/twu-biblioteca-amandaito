@@ -15,9 +15,8 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class BibliotecaServiceTest {
-    private List<Book> listOfBooks = new ArrayList<Book>();
 
-    private BookRepositoryImpl bookRepository = new BookRepositoryImpl(listOfBooks);
+    private BookRepositoryImpl bookRepository = new BookRepositoryImpl();
 
     private BookService bookService = new BookService(bookRepository);
 
@@ -33,11 +32,6 @@ public class BibliotecaServiceTest {
 
     private BibliotecaService bibliotecaService = new BibliotecaService(bookService, movieService, userService);
 
-    @After
-    public void finalize() {
-        listOfBooks.clear();
-    }
-
     @Test
     public void listBooksWithColumns() {
         String dataBook = "1 | TDD | Nora Roberts | 2019-12-27";
@@ -46,7 +40,7 @@ public class BibliotecaServiceTest {
 
         bookService.getListOfBooks().add(book);
 
-        assertEquals(listOfBooks.size(), 1);
+        assertEquals(bookService.getListOfBooks().size(), 1);
         assertEquals(dataBook, bibliotecaService.listBooksWithColumns().get(0));
     }
 
