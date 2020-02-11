@@ -10,7 +10,9 @@ import java.util.List;
 public class UserRepositoryImpl implements UserRepository {
 
     private final static List<User> listOfUsers = new ArrayList<>(Arrays.asList(
-            new User("teste", "luiza", "lgmaraes2@gmail.com", "1234543422", UserType.CUSTOMER)
+            new User("teste", "luiza", "lgmaraes2@gmail.com", "1234543422", UserType.CUSTOMER),
+            new User("teste", "eliza", "testgmaraes2@gmail.com", "1234543422", UserType.LIBRARIAN)
+
     ));
 
     @Override

@@ -35,8 +35,12 @@ public class BibliotecaService {
         return movieService.listOfMoviesWithColumns();
     }
 
-    public User showUserInformation(String libraryNumber){
-        return userService.findUser(libraryNumber);
+    public List<String> listOfBooksChecked(){
+        return bookService.listOfBooksChecked();
+    }
+
+    public String showUserInformation(String libraryNumber){
+        return userService.findUser(libraryNumber).toString();
     }
 
     public void checkoutBook(Book book, User user) {

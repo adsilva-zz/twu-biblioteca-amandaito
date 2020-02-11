@@ -68,4 +68,8 @@ public class Book {
     public String toString() {
         return identifier + " | " + title +" | " + author + " | " + yearPublished.format(DateTimeFormatter.ISO_DATE);
     }
+
+    public String viewUserChecked(){
+        return getUser().getName() + " - " + toString();
+    }
 }

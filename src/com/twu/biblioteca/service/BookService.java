@@ -30,10 +30,16 @@ public class BookService {
 
     public void returnBook(Book book){
         book.setCheckout(false);
+        book.setUser(null);
     }
 
     public List<String> listBooksWithColumns() {
         return getListOfBooks().stream().filter(book -> !book.isCheckout())
                 .map(Book::toString).collect(Collectors.toList());
+    }
+
+    public List<String> listOfBooksChecked() {
+        return getListOfBooks().stream().filter(book -> book.isCheckout())
+                .map(Book::viewUserChecked).collect(Collectors.toList());
     }
 }

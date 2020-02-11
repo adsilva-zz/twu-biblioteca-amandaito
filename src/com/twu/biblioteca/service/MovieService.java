@@ -18,15 +18,15 @@ public class MovieService {
         return movieRepository;
     }
 
-    public List<Movie> getListOfMovies() {
+    public List<Movie> getListOfMovies(){
         return this.movieRepository.getListOfMovies();
     }
 
-    public void checkoutMovie(Movie movie) {
+    public void checkoutMovie(Movie movie){
         movie.setCheckout(true);
     }
 
-    public Movie findBookWithIdentifier(Long identifier) {
+    public Movie findBookWithIdentifier(Long identifier){
         return movieRepository.findBookWithIdentifier(identifier);
     }
 
