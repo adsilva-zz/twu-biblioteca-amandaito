@@ -5,7 +5,6 @@ import com.twu.biblioteca.model.Movie;
 import com.twu.biblioteca.model.User;
 import com.twu.biblioteca.model.UserType;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class MenuService {
