@@ -59,7 +59,7 @@ public class MenuService {
         return option;
     }
 
-    public long choose() {
+    public int choose() {
 
         System.out.printf(CHOOSE_NUMBER);
         int identifierBook = read.nextInt();
@@ -72,11 +72,7 @@ public class MenuService {
         if (getUser() == null) {
             System.out.println("Library number or password wrong");
         } else {
-            long bookNumber = this.choose();
-            Book bookFound = bibliotecaService.findBook(bookNumber);
-
-            if (bookFound != null && !bookFound.isCheckout()) {
-                bibliotecaService.checkoutBook(bookFound, user);
+            if (bibliotecaService.checkoutBook((long) this.choose(), user)) {
                 System.out.println(bibliotecaService.SUCCESS_CHECKOUT_BOOK);
             } else {
                 System.out.println(bibliotecaService.UN_SUCCESSFUL_CHECKOUT_BOOK);
@@ -89,11 +85,7 @@ public class MenuService {
         if (getUser() == null) {
             System.out.println("Library number or password wrong");
         } else {
-            long bookNumber = this.choose();
-            Book bookFound = bibliotecaService.findBook(bookNumber);
-
-            if (bookFound != null && bookFound.isCheckout()) {
-                bibliotecaService.returnBook(bookFound);
+            if (bibliotecaService.returnBook((long)this.choose())) {
                 System.out.println(bibliotecaService.SUCCESSFUL_RETURN_BOOK);
             } else {
                 System.out.println(bibliotecaService.UN_SUCCESSFUL_RETURN_BOOK);
@@ -108,10 +100,7 @@ public class MenuService {
             System.out.println("Library number or password wrong");
         } else {
             long movieNumber = this.choose();
-            Movie movieFound = bibliotecaService.findMovie(movieNumber);
-
-            if (movieFound != null && !movieFound.isCheckout()) {
-                bibliotecaService.checkoutMovie(movieFound);
+            if (bibliotecaService.checkoutMovie((long)this.choose(), user)) {
                 System.out.println(bibliotecaService.SUCCESS_CHECKOUT_MOVIE);
             } else {
                 System.out.println(bibliotecaService.UN_SUCCESSFUL_CHECKOUT_MOVIE);

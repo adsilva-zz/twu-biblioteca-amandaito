@@ -25,8 +25,6 @@ public class BibliotecaApp {
 
         System.out.println(menuService.listMenuOptions());
 
-        System.out.println(userRepository.getListOfUsers());
-
         try {
             int option = 0;
             while (option != 8) {

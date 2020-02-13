@@ -9,9 +9,9 @@ import java.util.List;
 
 public class BookRepositoryImpl implements BookRepository {
 
-    private final static List<Book> listOfBook = new ArrayList<>(Arrays.asList(
-            new Book("Nora Roberts", "Testes Unitários", LocalDate.of(2019, 12, 27), false),
-            new Book("Jorge Amado", "Desenvolvimento Web", LocalDate.of(2018, 2, 17), false)
+    private final List<Book> listOfBook = new ArrayList<>(Arrays.asList(
+            new Book(1L,"Nora Roberts", "Testes Unitários", LocalDate.of(2019, 12, 27), false),
+            new Book(2L,"Jorge Amado", "Desenvolvimento Web", LocalDate.of(2018, 2, 17), false)
     ));
 
     @Override

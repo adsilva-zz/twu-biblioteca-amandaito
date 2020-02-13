@@ -19,18 +19,30 @@ public class BookService {
         return bookRepository.getListOfBooks();
     }
 
-    public void checkoutBook(Book book, User user){
-        book.setUser(user);
-        book.setCheckout(true);
+    public boolean checkoutBook(Long bookNumber, User user){
+        Book founded = findBookWithIdentifier(bookNumber);
+
+        if(founded != null && !founded.isCheckout() && user != null){
+            founded.setUser(user);
+            founded.setCheckout(true);
+            return true;
+        }
+        return false;
     }
 
     public Book findBookWithIdentifier(long identifier){
         return bookRepository.findBook(identifier);
     }
 
-    public void returnBook(Book book){
-        book.setCheckout(false);
-        book.setUser(null);
+    public boolean returnBook(Long bookNumber){
+        Book founded = findBookWithIdentifier(bookNumber);
+
+        if(founded != null && founded.isCheckout()){
+            founded.setCheckout(false);
+            founded.setUser(null);
+            return true;
+        }
+        return false;
     }
 
     public List<String> listBooksWithColumns() {

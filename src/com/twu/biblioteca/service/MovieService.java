@@ -1,6 +1,7 @@
 package com.twu.biblioteca.service;
 
 import com.twu.biblioteca.model.Movie;
+import com.twu.biblioteca.model.User;
 import com.twu.biblioteca.repository.MovieRepository;
 
 import java.util.List;
@@ -18,16 +19,23 @@ public class MovieService {
         return movieRepository;
     }
 
-    public List<Movie> getListOfMovies(){
+    public List<Movie> getListOfMovies() {
         return this.movieRepository.getListOfMovies();
     }
 
-    public void checkoutMovie(Movie movie){
-        movie.setCheckout(true);
+    public boolean checkoutMovie(Long movieNumber, User user) {
+        Movie founded = findMovieWithIdentifier(movieNumber);
+
+        if (founded != null && !founded.isCheckout() && user != null) {
+            founded.setCheckout(true);
+            founded.setUser(user);
+            return true;
+        }
+        return false;
     }
 
-    public Movie findBookWithIdentifier(Long identifier){
-        return movieRepository.findBookWithIdentifier(identifier);
+    public Movie findMovieWithIdentifier(Long identifier) {
+        return movieRepository.findMovieWithIdentifier(identifier);
     }
 
     public List<String> listOfMoviesWithColumns() {

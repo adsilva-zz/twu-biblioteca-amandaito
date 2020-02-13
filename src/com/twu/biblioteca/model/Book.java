@@ -12,12 +12,17 @@ public class Book {
     private User user;
     private static long SEQUENCE;
 
-    public Book(String author, String title, LocalDate yearPublished, boolean checkout) {
+    public Book(Long identifier, String author, String title, LocalDate yearPublished, boolean checkout) {
         this.author = author;
         this.title = title;
         this.yearPublished = yearPublished;
         this.checkout = checkout;
-        this.identifier = ++SEQUENCE;
+        this.identifier = identifier;
+    }
+
+    public Book(String author, String title, LocalDate yearPublished, boolean checkout) {
+        this(++SEQUENCE, author, title, yearPublished, checkout);
+
     }
 
     public LocalDate getYearPublished() {

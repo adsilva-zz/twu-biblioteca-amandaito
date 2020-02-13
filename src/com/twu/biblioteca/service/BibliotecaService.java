@@ -16,6 +16,8 @@ public class BibliotecaService {
     public static final String SUCCESS_CHECKOUT_MOVIE = "Thank you! Enjoy the movie";
     public static final String UN_SUCCESSFUL_CHECKOUT_MOVIE = "Sorry, that movie is not available";
 
+    public static final String USER_NOT_FOUND = "Not found user.";
+
     private UserService userService;
 
     private BookService bookService;
@@ -40,26 +42,23 @@ public class BibliotecaService {
     }
 
     public String showUserInformation(String libraryNumber){
-        return userService.findUser(libraryNumber).toString();
+        User userFound = userService.findUser(libraryNumber);
+        if (userFound != null){
+            return userFound.toString();
+        }
+        return USER_NOT_FOUND;
     }
 
-    public void checkoutBook(Book book, User user) {
-        bookService.checkoutBook(book, user);
+    public boolean checkoutBook(Long bookNumber, User user) {
+        return bookService.checkoutBook(bookNumber, user);
     }
 
-    public void checkoutMovie(Movie movie) { movieService.checkoutMovie(movie);
+    public boolean checkoutMovie(Long movieNumber, User user) {
+        return movieService.checkoutMovie(movieNumber, user);
     }
 
-    public void returnBook(Book book) {
-        bookService.returnBook(book);
-    }
-
-    public Book findBook(Long numberOfBook) {
-        return bookService.findBookWithIdentifier(numberOfBook);
-    }
-
-    public Movie findMovie(Long movieNumber) {
-        return movieService.findBookWithIdentifier(movieNumber);
+    public boolean returnBook(Long book) {
+        return bookService.returnBook(book);
     }
 
 }

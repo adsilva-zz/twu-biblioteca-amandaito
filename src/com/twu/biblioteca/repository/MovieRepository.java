@@ -8,5 +8,5 @@ public interface MovieRepository {
 
     public List<Movie> getListOfMovies();
 
-    public Movie findBookWithIdentifier(Long identifier);
+    public Movie findMovieWithIdentifier(Long identifier);
 }

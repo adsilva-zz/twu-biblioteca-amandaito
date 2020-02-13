@@ -10,8 +10,9 @@ import java.util.List;
 
 public class MovieRepositoryImpl implements MovieRepository {
 
-    private final static List<Movie> listOfMovies = new ArrayList<>(Arrays.asList(
-            new Movie("Guerra Mundial Z", LocalDate.of(2020, 1, 12), "Tom Testes", Rating.DEZ, false )));
+    private final List<Movie> listOfMovies = new ArrayList<>(Arrays.asList(
+            new Movie(1L, "Guerra Mundial Z", LocalDate.of(2020, 1, 12), "Tom Testes",
+                    Rating.DEZ, false )));
 
     @Override
     public List<Movie> getListOfMovies() {
@@ -19,7 +20,7 @@ public class MovieRepositoryImpl implements MovieRepository {
     }
 
     @Override
-    public Movie findBookWithIdentifier(Long identifier){
+    public Movie findMovieWithIdentifier(Long identifier){
         return getListOfMovies().stream().filter(movie -> movie.getIdentifier().equals(identifier))
                 .findFirst().orElse(null);
     }

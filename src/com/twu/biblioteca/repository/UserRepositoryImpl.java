@@ -23,8 +23,7 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public User findUser(String libraryNumber) {
         return getListOfUsers().stream()
-                .filter(user -> user.getLibraryNumber().equals(libraryNumber)).findFirst().orElse(null);
+                .filter(user -> user.getLibraryNumber().equals(libraryNumber))
+                .findFirst().orElse(null);
     }
-
-
 }

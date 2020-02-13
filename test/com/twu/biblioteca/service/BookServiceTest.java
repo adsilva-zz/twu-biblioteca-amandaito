@@ -4,6 +4,8 @@ import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.model.User;
 import com.twu.biblioteca.model.UserType;
 import com.twu.biblioteca.repository.BookRepositoryImpl;
+import com.twu.biblioteca.repository.UserRepository;
+import com.twu.biblioteca.repository.UserRepositoryImpl;
 import org.junit.Test;
 
 import java.time.LocalDate;
@@ -12,8 +14,10 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class BookServiceTest {
+
     private BookRepositoryImpl bookRepository = new BookRepositoryImpl();
     private BookService bookService = new BookService(bookRepository);
+    private UserRepository userRepository = new UserRepositoryImpl();
 
     @Test
     public void listBooksWithSuccess() {
@@ -23,25 +27,27 @@ public class BookServiceTest {
 
     @Test
     public void checkoutBookWithSuccess() {
-        Book book = new Book("Bruce Lee", "Run two",
-                LocalDate.of(2019, 02, 12), false);
+        Book book = bookRepository.findBook(1);
+        book.setCheckout(false);
+        User user = userRepository.findUser("000-0001");
 
-        User user = new User("teste", "luiza", "lgmaraes2@gmail.com",
-                "1234543422", UserType.CUSTOMER);
+        boolean checkoutBook = bookService.checkoutBook(book.getIdentifier(), user);
+        assertEquals(true,checkoutBook );
+    }
 
-        bookService.checkoutBook(book, user);
-        assertEquals(true, book.isCheckout());
+    @Test
+    public void checkoutBookWithFailed(){
+        Book book = bookRepository.findBook(1);
+        book.setCheckout(true);
+        User user = userRepository.findUser("000-0001");
+        assertFalse(bookService.checkoutBook(book.getIdentifier(), user));
     }
 
     @Test
     public void bookHasUserAfterCheckout() {
-        Book book = new Book("Bruce Lee", "Run two",
-                LocalDate.of(2019, 02, 12), false);
-
-        User user = new User("teste", "luiza", "lgmaraes2@gmail.com",
-                "1234543422", UserType.CUSTOMER);
-
-        bookService.checkoutBook(book, user);
+        Book book = bookRepository.findBook(1);
+        User user = userRepository.findUser("000-0001");
+        bookService.checkoutBook(book.getIdentifier(), user);
         assertEquals(user, book.getUser());
     }
 
@@ -55,9 +61,9 @@ public class BookServiceTest {
 
     @Test
     public void returnBookWithSuccess() {
-        Book book = new Book("Bruce Lee", "Run two",
-                LocalDate.of(2019, 02, 12), true);
-        bookService.returnBook(book);
+        Book book = bookRepository.findBook(1);
+        book.setCheckout(true);
+        bookService.returnBook(book.getIdentifier());
         assertEquals(false, book.isCheckout());
     }
 }
